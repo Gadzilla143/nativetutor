@@ -1,7 +1,4 @@
-import { Home } from './Home';
-import { Discount } from './Discount';
+import {HomePage} from './HomePage/HomePage';
+import {Discount} from './Discount';
 
-export {
-    Home,
-    Discount
-}
+export {HomePage, Discount};
