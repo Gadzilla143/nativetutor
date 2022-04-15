@@ -15,6 +15,7 @@ export const DISCOUNTS_DATA = [
             site: 'http://artsushi.by/',
         },
         img: artsushi,
+        shortDesc: 'Доставка еды',
         address: '+375 29 687 60 60 \n+375 33 687 ',
         discount: '12%',
         promocode: 'Lll',
@@ -27,11 +28,12 @@ export const DISCOUNTS_DATA = [
     },
     {
         id: 2,
-        title: 'Доставка еды Wok.by',
+        title: 'Wok.by',
         socialLinks: {
             site: 'http://wok.by',
         },
         img: wok,
+        shortDesc: 'Доставка еды',
         address: '(vel, mts) 788 4444\n' +
             'Прием заказов: \n' +
             'вс-чт 11:00-22:00 \n' +
@@ -43,11 +45,12 @@ export const DISCOUNTS_DATA = [
     },
     {
         id: 3,
-        title: 'Доставка еды Пловберри',
+        title: 'Пловберри',
         socialLinks: {
             site: 'https://plovberry.by',
         },
         img: plovberry,
+        shortDesc: 'Доставка еды',
         address: '(029)125-22-33\n' +
             'Режим работы:\n' +
             '11:00-23:00',
@@ -58,11 +61,12 @@ export const DISCOUNTS_DATA = [
     },
     {
         id: 4,
-        title: 'Доставка еды TOKINY',
+        title: 'TOKINY',
         socialLinks: {
             site: 'https://tokiny.by',
         },
         img: tokiny,
+        shortDesc: 'Доставка еды',
         address: 'Где искать TokiNY?\n' +
             '\nФуд-корт.\n' +
             'ТРЦ «Арена-Сити» на Победителей, 84. \n' +
@@ -84,6 +88,7 @@ export const DISCOUNTS_DATA = [
             instagram: 'https://www.instagram.com/papajohnsby/'
         },
         img: papa,
+        shortDesc: 'Доставка еды',
         address: 'Для заказа - 7779 \n' +
             'Доставка с 10.00 до 02.00 ',
         discount: '10%',
@@ -98,6 +103,7 @@ export const DISCOUNTS_DATA = [
             site: 'www.healthyplan.by',
         },
         img: healthy,
+        shortDesc: 'Доставка еды',
         address: '',
         discount: '10%',
         promocode: 'Lll',
@@ -114,6 +120,7 @@ export const DISCOUNTS_DATA = [
             site: 'https://dominos.by/',
         },
         img: domino,
+        shortDesc: 'Доставка еды',
         address: 'Время работы пиццерий: с 11.00 – до 23.00 ежедневно.\n' +
             'Доставка пиццы осуществляется круглосуточно только в г. Минске.',
         discount: '25%',

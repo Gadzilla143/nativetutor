@@ -1,4 +1,5 @@
 import {HomePage} from './HomePage/HomePage';
-import {Discount} from './Discount';
+import {DiscountPage} from './Discount/Discount';
+import {EmptyPage} from './EmptyPage/EmptyPage';
 
-export {HomePage, Discount};
+export {HomePage, DiscountPage, EmptyPage};
