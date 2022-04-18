@@ -10,7 +10,7 @@ export const HomePageContentItem = ({item, navigation}) => {
       delayPressIn={0}
       onPress={() => navigation.navigate(item.routeName)}>
       <View style={styles.pagesListItem}>
-        <CircleImage image={item.icon} imageColor={COLORS.LIGHT_BLUE} />
+        <CircleImage image={item.icon} imageColor={COLORS.BLUE} />
         <Text style={styles.pageName}>{item.pageName}</Text>
       </View>
     </TouchableOpacity>

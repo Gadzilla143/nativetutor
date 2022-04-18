@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
 import {View, StyleSheet, TextInput, Image} from 'react-native';
-import {COLORS} from '../../../constants/style';
+import {COLORS, FONT_FAMILY, SIZES} from '../../../constants/style';
 import {search} from '../../../constants/header_constants';
+
+const SEARCH_INPUT_PLACEHOLDER = 'Search for company info';
 
 export const SearchInput = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -13,6 +15,7 @@ export const SearchInput = () => {
         style={styles.searchInput}
         onChangeText={value => setSearchValue(value)}
         value={searchValue}
+        placeholder={SEARCH_INPUT_PLACEHOLDER}
       />
     </View>
   );
@@ -35,6 +38,10 @@ const styles = StyleSheet.create({
   },
   searchInput: {
     height: 60,
+    borderRadius: 10,
+    flex: 1,
+    ...FONT_FAMILY,
+    fontSize: SIZES.h4,
     backgroundColor: COLORS.WHITE,
   },
 });
