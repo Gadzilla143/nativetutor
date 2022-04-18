@@ -2,15 +2,17 @@ import React from "react";
 
 import {Image, StyleSheet, Text, View} from "react-native";
 import {COLORS, SIZES} from "../../constants/style";
+import {TouchableOpacity} from "react-native-gesture-handler";
 
 
-export const renderDiscountCard = ({item}) => {
+export const DiscountCard = (props) => {
     const {
         title,
         img,
         discount,
         shortDesc,
-    } = item
+        onPress,
+    } = props;
     return (
         <View
             style={styles.wrapper}
@@ -24,6 +26,8 @@ export const renderDiscountCard = ({item}) => {
                 />
                 <Text
                     style={styles.title}
+                    numberOfLines={1}
+                    ellipsizeMode='tail'
                 >
                     {title}
                 </Text>
@@ -37,11 +41,15 @@ export const renderDiscountCard = ({item}) => {
                 >
                     {discount}
                 </Text>
-                <Text
-                    style={styles.details}
+                <TouchableOpacity
+                    onPress={onPress}
                 >
-                    {'Details'}
-                </Text>
+                    <Text
+                        style={styles.details}
+                    >
+                        {'Details'}
+                    </Text>
+                </TouchableOpacity>
             </View>
         </View>
     )
@@ -66,7 +74,7 @@ const styles = StyleSheet.create({
         borderColor: COLORS.DARK_GREY,
         backgroundColor: COLORS.LIGHT_GREY,
         alignContent: "center",
-        justifyContent: 'space-around',
+        justifyContent: 'space-between',
         padding: 5,
     },
     logo: {
@@ -82,6 +90,8 @@ const styles = StyleSheet.create({
     },
     title: {
         alignSelf: 'center',
+        textAlign: 'center',
+        width: SIZES.WIDTH * 0.32,
         color: COLORS.BLACK,
         fontSize: 20,
         fontWeight: 'bold',
@@ -109,6 +119,7 @@ const styles = StyleSheet.create({
         fontSize: 15,
         borderRadius: 10,
         fontWeight: 'bold',
-        color: COLORS.LIGHT_BLUE
+        color: COLORS.DARK_BLUE,
+        marginBottom: 10,
     },
 })

@@ -2,7 +2,7 @@ import React from 'react';
 
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
-import {DiscountPage, EmptyPage, HomePage} from './src/screens';
+import {DiscountPage, DiscountDescPage, EmptyPage, HomePage} from './src/screens';
 
 const Stack = createStackNavigator();
 
@@ -16,6 +16,7 @@ const App = () => {
         initialRouteName={'Home'}>
         <Stack.Screen name="Home" component={HomePage} />
         <Stack.Screen name="Discount" component={DiscountPage} />
+        <Stack.Screen name="DiscountDesc" component={DiscountDescPage} />
         <Stack.Screen name="HR" component={EmptyPage} />
         <Stack.Screen name="Health" component={EmptyPage} />
         <Stack.Screen name="TechnicalGuide" component={EmptyPage} />
