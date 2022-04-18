@@ -5,7 +5,7 @@ import {Image, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {COLORS, IOS, SIZES} from "../../constants/style";
 import icons from "../../constants/icons";
 
-export const DiscountHeader = ({navigation}) => {
+export const DiscountHeader = ({navigation, title}) => {
     return (
         <View
             style={styles.wrapper}
@@ -28,7 +28,7 @@ export const DiscountHeader = ({navigation}) => {
                 <View>
                     <Text
                         style={styles.title}
-                    >Discount</Text>
+                    >{title}</Text>
                 </View>
             </View>
         </View>
@@ -61,7 +61,8 @@ const styles = StyleSheet.create({
         height: 30,
     },
     title: {
-        fontSize: 20,
-        color: COLORS.BLACK
+        fontSize: SIZES.h1,
+        color: COLORS.BLACK,
+        fontWeight: 'bold',
     },
 })

@@ -12,8 +12,8 @@ export const DiscountPage = ({route, navigation}) => {
             <View
                 style={styles.container}
             >
-                <DiscountHeader navigation={navigation}/>
-                <DiscountList />
+                <DiscountHeader title={'Discount'} navigation={navigation}/>
+                <DiscountList navigation={navigation}/>
             </View>
         </View>
     )
