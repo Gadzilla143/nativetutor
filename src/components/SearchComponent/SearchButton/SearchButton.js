@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     height: 60,
     borderRadius: 10,
     marginLeft: 10,
-    backgroundColor: COLORS.LIGHT_BLUE,
+    backgroundColor: COLORS.BLUE,
   },
   searchButtonText: {
     fontSize: 16,

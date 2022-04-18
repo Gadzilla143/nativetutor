@@ -4,12 +4,17 @@ import {COLORS, FONT_FAMILY, SIZES} from '../../constants/style';
 import {account, logo} from '../../constants/header_constants';
 import {CircleImage} from '../CircleImage/CircleImage';
 import {Search} from '../SearchComponent/Search';
+import LinearGradient from 'react-native-linear-gradient';
 
 const APP_NAME = 'LAsk';
 
 export const Header = () => {
   return (
-    <View style={styles.header}>
+    <LinearGradient
+      colors={[COLORS.DARK_BLUE, COLORS.LIGHT_BLUE]}
+      style={styles.header}
+      start={{x: 0, y: 0}}
+      end={{x: 1, y: 1}}>
       <View style={styles.headerTopContainer}>
         <View style={styles.headerLogoContainer}>
           <Image source={logo} style={styles.pageIcon} />
@@ -20,7 +25,7 @@ export const Header = () => {
         </View>
       </View>
       <Search />
-    </View>
+    </LinearGradient>
   );
 };
 
@@ -30,7 +35,6 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     paddingBottom: 30,
     paddingHorizontal: 30,
-    backgroundColor: COLORS.DARK_BLUE,
     justifyContent: 'space-between',
   },
   headerTopContainer: {
