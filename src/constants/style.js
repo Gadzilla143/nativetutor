@@ -1,6 +1,6 @@
-import {Dimensions, Platform} from "react-native";
+import {Dimensions, Platform} from 'react-native';
 
-export const IOS = Platform.OS === 'ios'
+export const IOS = Platform.OS === 'ios';
 
 export const COLORS = {
   DARK_BLUE: '#225fbf',
@@ -11,9 +11,10 @@ export const COLORS = {
   DARK_GREY: '#eeeeee',
   DARK: '#172b4d',
   BLACK: '#333333',
+  GREY_TEXT: '#606060',
 };
 
-const {width, height} = Dimensions.get("window");
+const {width, height} = Dimensions.get('window');
 
 export const SIZES = {
   WIDTH: width,

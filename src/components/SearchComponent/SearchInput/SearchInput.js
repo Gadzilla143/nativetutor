@@ -1,27 +1,58 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {View, StyleSheet, TextInput, Image} from 'react-native';
 import {COLORS, FONT_FAMILY, SIZES} from '../../../constants/style';
 import {search} from '../../../constants/header_constants';
+import {
+  getFilteredSectionsData,
+  getFullSectionsData,
+} from '../../../utils/search.utils';
+import {SearchDropdownList} from '../SearchDropdownList/SearchDropdownList';
 
 const SEARCH_INPUT_PLACEHOLDER = 'Search for company info';
 
 export const SearchInput = () => {
   const [searchValue, setSearchValue] = useState('');
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [sectionsData, setSectionsData] = useState(getFullSectionsData());
+  const textInput = useRef();
+
+  const onChangeHandler = value => {
+    setSearchValue(value);
+  };
+
+  useEffect(() => {
+    if (!searchValue) {
+      setSectionsData(getFullSectionsData());
+      return;
+    }
+
+    setSectionsData(getFilteredSectionsData(searchValue));
+  }, [searchValue]);
 
   return (
-    <View style={styles.searchInputContainer}>
-      <Image source={search} style={styles.searchIcon} />
-      <TextInput
-        style={styles.searchInput}
-        onChangeText={value => setSearchValue(value)}
-        value={searchValue}
-        placeholder={SEARCH_INPUT_PLACEHOLDER}
-      />
+    <View style={styles.searchBarContainer}>
+      <View style={styles.searchInputContainer}>
+        <Image source={search} style={styles.searchIcon} />
+        <TextInput
+          style={styles.searchInput}
+          onChangeText={onChangeHandler}
+          value={searchValue}
+          placeholder={SEARCH_INPUT_PLACEHOLDER}
+          ref={textInput}
+          onFocus={() => setIsSearchOpen(true)}
+          onBlur={() => setIsSearchOpen(false)}
+        />
+      </View>
+      {isSearchOpen && <SearchDropdownList sectionsData={sectionsData} />}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  searchBarContainer: {
+    flex: 1,
+    position: 'relative',
+  },
   searchInputContainer: {
     backgroundColor: COLORS.WHITE,
     flexDirection: 'row',
@@ -37,7 +68,6 @@ const styles = StyleSheet.create({
     height: 30,
   },
   searchInput: {
-    height: 60,
     borderRadius: 10,
     flex: 1,
     ...FONT_FAMILY,
