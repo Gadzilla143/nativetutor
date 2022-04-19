@@ -10,7 +10,7 @@ import {SearchDropdownList} from '../SearchDropdownList/SearchDropdownList';
 
 const SEARCH_INPUT_PLACEHOLDER = 'Search for company info';
 
-export const SearchInput = () => {
+export const SearchInput = ({navigation}) => {
   const [searchValue, setSearchValue] = useState('');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [sectionsData, setSectionsData] = useState(getFullSectionsData());
@@ -40,10 +40,14 @@ export const SearchInput = () => {
           placeholder={SEARCH_INPUT_PLACEHOLDER}
           ref={textInput}
           onFocus={() => setIsSearchOpen(true)}
-          onBlur={() => setIsSearchOpen(false)}
         />
       </View>
-      {isSearchOpen && <SearchDropdownList sectionsData={sectionsData} />}
+      {isSearchOpen && (
+        <SearchDropdownList
+          sectionsData={sectionsData}
+          navigation={navigation}
+        />
+      )}
     </View>
   );
 };

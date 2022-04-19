@@ -1,9 +1,12 @@
 import {PAGES_DATA} from '../constants/page_constants';
 
+export const DETAILED_INFO_SECTION_TITLE = 'Detailed information';
+export const TOPICS_SECTION_TITLE = 'Topics';
+
 const INITIAL_SECTIONS_DATA = [
-  {title: 'Detailed information', data: []},
+  {sectionTitle: DETAILED_INFO_SECTION_TITLE, data: []},
   {
-    title: 'Topics',
+    sectionTitle: TOPICS_SECTION_TITLE,
     data: [],
   },
 ];
@@ -12,7 +15,11 @@ export const getFullSectionsData = () => {
   const topicsData = PAGES_DATA.reduce(
     (prevTopics, currentTopicData) => [
       ...prevTopics,
-      {title: currentTopicData.title, routeName: currentTopicData.routeName},
+      {
+        title: currentTopicData.title,
+        routeName: currentTopicData.routeName,
+        anchoredSection: TOPICS_SECTION_TITLE,
+      },
     ],
     [],
   );
@@ -30,13 +37,14 @@ export const getFullSectionsData = () => {
       {
         title: currentDetailedInfo.title,
         routeName: currentDetailedInfo.routeName,
+        anchoredSection: DETAILED_INFO_SECTION_TITLE,
       },
     ],
     [],
   );
 
   return INITIAL_SECTIONS_DATA.map(section =>
-    section.title === 'Topics'
+    section.sectionTitle === 'Topics'
       ? {...section, data: topicsData}
       : {...section, data: detailedInfoData},
   );

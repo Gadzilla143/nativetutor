@@ -3,10 +3,10 @@ import {View, StyleSheet} from 'react-native';
 import {SearchInput} from './SearchInput/SearchInput';
 import {SearchButton} from './SearchButton/SearchButton';
 
-export const Search = () => {
+export const Search = ({navigation}) => {
   return (
     <View style={styles.searchContainer}>
-      <SearchInput />
+      <SearchInput navigation={navigation} />
       <SearchButton />
     </View>
   );

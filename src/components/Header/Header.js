@@ -8,7 +8,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 const APP_NAME = 'LAsk';
 
-export const Header = () => {
+export const Header = ({navigation}) => {
   return (
     <LinearGradient
       colors={[COLORS.DARK_BLUE, COLORS.LIGHT_BLUE]}
@@ -24,7 +24,7 @@ export const Header = () => {
           <CircleImage image={account} imageColor={COLORS.WHITE} />
         </View>
       </View>
-      <Search />
+      <Search navigation={navigation} />
     </LinearGradient>
   );
 };

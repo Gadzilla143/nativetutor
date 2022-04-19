@@ -1,14 +1,35 @@
 import React from 'react';
-import {View, StyleSheet, Text, SectionList} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Text,
+  SectionList,
+  TouchableOpacity,
+} from 'react-native';
 import {COLORS, FONT_FAMILY, SIZES} from '../../../constants/style';
+import {DETAILED_INFO_SECTION_TITLE} from '../../../utils/search.utils';
 
 const EMPTY_SECTION_MESSAGE = 'There is no result for entered search string.';
 
-export const SearchDropdownList = ({sectionsData}) => {
-  const renderSearchItem = foundItemTitle => (
-    <View style={styles.item}>
-      <Text style={styles.title}>{foundItemTitle}</Text>
-    </View>
+export const SearchDropdownList = ({sectionsData, navigation}) => {
+  const searchItemPressHandler = item => {
+    if (item.anchoredSection === DETAILED_INFO_SECTION_TITLE) {
+      navigation.navigate('DiscountDesc', {
+        itemRouteName: item.routeName,
+      });
+      return;
+    }
+
+    navigation.navigate(item.routeName);
+  };
+
+  const renderSearchItem = item => (
+    <TouchableOpacity
+      activeOpacity={0.7}
+      onPress={() => searchItemPressHandler(item)}
+      style={styles.item}>
+      <Text style={styles.title}>{item.title}</Text>
+    </TouchableOpacity>
   );
 
   const renderEmptySearchResultMessage = searchResultLength => {
@@ -29,11 +50,13 @@ export const SearchDropdownList = ({sectionsData}) => {
     <SectionList
       sections={sectionsData}
       style={styles.searchListContainer}
-      renderItem={({item}) => renderSearchItem(item.title)}
+      renderItem={({item}) => renderSearchItem(item)}
       renderSectionFooter={({section}) =>
         renderEmptySearchResultMessage(section.data.length)
       }
-      renderSectionHeader={({section: {title}}) => renderSectionHeader(title)}
+      renderSectionHeader={({section: {sectionTitle}}) =>
+        renderSectionHeader(sectionTitle)
+      }
     />
   );
 };

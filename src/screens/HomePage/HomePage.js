@@ -7,7 +7,7 @@ export const HomePage = ({navigation}) => {
   return (
     <View style={styles.body}>
       <HomePageContent navigation={navigation} />
-      <Header />
+      <Header navigation={navigation} />
     </View>
   );
 };
