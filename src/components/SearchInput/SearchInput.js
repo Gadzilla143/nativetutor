@@ -1,12 +1,12 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {View, StyleSheet, TextInput, Image} from 'react-native';
-import {COLORS, FONT_FAMILY, SIZES} from '../../../constants/style';
-import {search} from '../../../constants/header_constants';
+import {COLORS, FONT_FAMILY, SIZES} from '../../constants/style';
+import {search} from '../../constants/header_constants';
 import {
   getFilteredSectionsData,
   getFullSectionsData,
-} from '../../../utils/search.utils';
-import {SearchDropdownList} from '../SearchDropdownList/SearchDropdownList';
+} from '../../utils/search.utils';
+import {SearchDropdownList} from './SearchDropdownList/SearchDropdownList';
 
 const SEARCH_INPUT_PLACEHOLDER = 'Search for company info';
 

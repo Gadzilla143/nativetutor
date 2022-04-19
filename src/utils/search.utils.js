@@ -50,10 +50,22 @@ export const getFullSectionsData = () => {
   );
 };
 
-export const getFilteredSectionsData = searchValue =>
-  getFullSectionsData().map(sectionData => {
-    const filteredSectionData = sectionData.data.filter(data =>
-      data.title.toUpperCase().includes(searchValue.toUpperCase()),
+const isNoSearchResult = filteredData =>
+  filteredData.every(section => section.data.length === 0);
+
+const findSearchString = (stringForSearch, searchValue) =>
+  stringForSearch.toUpperCase().includes(searchValue.toUpperCase());
+
+export const getFilteredSectionsData = searchValue => {
+  const filteredData = getFullSectionsData().map(sectionData => {
+    const filteredSectionData = sectionData.data.filter(
+      data =>
+        findSearchString(data.title, searchValue) ||
+        findSearchString(data.routeName, searchValue),
     );
+
     return {...sectionData, data: filteredSectionData};
   });
+
+  return isNoSearchResult(filteredData) ? [] : filteredData;
+};

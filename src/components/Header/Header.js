@@ -3,8 +3,8 @@ import {Text, View, StyleSheet, Image} from 'react-native';
 import {COLORS, FONT_FAMILY, SIZES} from '../../constants/style';
 import {account, logo} from '../../constants/header_constants';
 import {CircleImage} from '../CircleImage/CircleImage';
-import {Search} from '../SearchComponent/Search';
 import LinearGradient from 'react-native-linear-gradient';
+import {SearchInput} from '../SearchInput/SearchInput';
 
 const APP_NAME = 'LAsk';
 
@@ -24,7 +24,9 @@ export const Header = ({navigation}) => {
           <CircleImage image={account} imageColor={COLORS.WHITE} />
         </View>
       </View>
-      <Search navigation={navigation} />
+      <View style={styles.searchContainer}>
+        <SearchInput navigation={navigation} />
+      </View>
     </LinearGradient>
   );
 };
@@ -54,5 +56,9 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     color: COLORS.WHITE,
     fontWeight: 'bold',
+  },
+  searchContainer: {
+    flexDirection: 'row',
+    height: 60,
   },
 });

@@ -32,14 +32,12 @@ export const SearchDropdownList = ({sectionsData, navigation}) => {
     </TouchableOpacity>
   );
 
-  const renderEmptySearchResultMessage = searchResultLength => {
-    if (searchResultLength === 0) {
-      return (
-        <View style={styles.item}>
-          <Text style={styles.title}>{EMPTY_SECTION_MESSAGE}</Text>
-        </View>
-      );
-    }
+  const renderEmptySearchResultMessage = () => {
+    return (
+      <View style={styles.item}>
+        <Text style={styles.title}>{EMPTY_SECTION_MESSAGE}</Text>
+      </View>
+    );
   };
 
   const renderSectionHeader = sectionHeader => (
@@ -51,12 +49,13 @@ export const SearchDropdownList = ({sectionsData, navigation}) => {
       sections={sectionsData}
       style={styles.searchListContainer}
       renderItem={({item}) => renderSearchItem(item)}
-      renderSectionFooter={({section}) =>
-        renderEmptySearchResultMessage(section.data.length)
-      }
-      renderSectionHeader={({section: {sectionTitle}}) =>
-        renderSectionHeader(sectionTitle)
-      }
+      renderSectionHeader={({section}) => {
+        if (section.data.length === 0) {
+          return;
+        }
+        return renderSectionHeader(section.sectionTitle);
+      }}
+      ListEmptyComponent={() => renderEmptySearchResultMessage()}
     />
   );
 };
