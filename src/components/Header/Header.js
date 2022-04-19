@@ -1,5 +1,5 @@
-import React from 'react';
-import {Text, View, StyleSheet, Image} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {Text, View, StyleSheet, Image, Keyboard} from 'react-native';
 import {COLORS, FONT_FAMILY, SIZES} from '../../constants/style';
 import {account, logo} from '../../constants/header_constants';
 import {CircleImage} from '../CircleImage/CircleImage';
@@ -9,21 +9,46 @@ import {SearchInput} from '../SearchInput/SearchInput';
 const APP_NAME = 'LAsk';
 
 export const Header = ({navigation}) => {
+  const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+
+  useEffect(() => {
+    const keyboardDidShowListener = Keyboard.addListener(
+      'keyboardDidShow',
+      () => {
+        setKeyboardVisible(true);
+      },
+    );
+    const keyboardDidHideListener = Keyboard.addListener(
+      'keyboardDidHide',
+      () => {
+        setKeyboardVisible(false);
+      },
+    );
+
+    return () => {
+      keyboardDidHideListener.remove();
+      keyboardDidShowListener.remove();
+    };
+  }, []);
+
   return (
     <LinearGradient
       colors={[COLORS.DARK_BLUE, COLORS.LIGHT_BLUE]}
       style={styles.header}
       start={{x: 0, y: 0}}
       end={{x: 1, y: 1}}>
-      <View style={styles.headerTopContainer}>
-        <View style={styles.headerLogoContainer}>
-          <Image source={logo} style={styles.pageIcon} />
-          <Text style={styles.appName}>{APP_NAME}</Text>
+      {!isKeyboardVisible && (
+        <View style={styles.headerTopContainer}>
+          <View style={styles.headerLogoContainer}>
+            <Image source={logo} style={styles.pageIcon} />
+            <Text style={styles.appName}>{APP_NAME}</Text>
+          </View>
+          <View>
+            <CircleImage image={account} imageColor={COLORS.WHITE} />
+          </View>
         </View>
-        <View>
-          <CircleImage image={account} imageColor={COLORS.WHITE} />
-        </View>
-      </View>
+      )}
+
       <View style={styles.searchContainer}>
         <SearchInput navigation={navigation} />
       </View>
