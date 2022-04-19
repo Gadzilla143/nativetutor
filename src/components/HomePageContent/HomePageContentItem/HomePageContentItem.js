@@ -11,7 +11,7 @@ export const HomePageContentItem = ({item, navigation}) => {
       onPress={() => navigation.navigate(item.routeName)}>
       <View style={styles.pagesListItem}>
         <CircleImage image={item.icon} imageColor={COLORS.BLUE} />
-        <Text style={styles.pageName}>{item.pageName}</Text>
+        <Text style={styles.pageName}>{item.title}</Text>
       </View>
     </TouchableOpacity>
   );
