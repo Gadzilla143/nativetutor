@@ -6,8 +6,8 @@ import {HomePageContent} from '../../components/HomePageContent/HomePageContent'
 export const HomePage = ({navigation}) => {
   return (
     <View style={styles.body}>
-      <Header />
       <HomePageContent navigation={navigation} />
+      <Header />
     </View>
   );
 };
@@ -15,5 +15,6 @@ export const HomePage = ({navigation}) => {
 const styles = StyleSheet.create({
   body: {
     flex: 1,
+    flexDirection: 'column-reverse',
   },
 });

@@ -45,8 +45,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
     flex: 1,
     width: '100%',
-    height: '300%',
+    height: '400%',
     top: 62,
+    borderColor: COLORS.LIGHT_BLUE,
+    borderWidth: 2,
   },
   item: {
     paddingVertical: 10,
