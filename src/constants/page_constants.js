@@ -1,3 +1,5 @@
+import {DISCOUNTS_DATA} from './discount_constants';
+
 export const travel = require('../assets/pagesIcons/travel.png');
 export const discount = require('../assets/pagesIcons/discount.png');
 export const fruits = require('../assets/pagesIcons/fruits.png');
@@ -9,37 +11,43 @@ export const PAGES_DATA = [
   {
     id: 1,
     icon: discount,
-    pageName: 'Discount Club',
+    title: 'Discount Club',
     routeName: 'Discount',
+    data: DISCOUNTS_DATA,
   },
   {
     id: 2,
     icon: travel,
-    pageName: 'Travel',
+    title: 'Travel',
     routeName: 'Travel',
+    data: [],
   },
   {
     id: 3,
     icon: fruits,
-    pageName: 'Fruits Delivery',
+    title: 'Fruits Delivery',
     routeName: 'Fruits',
+    data: [],
   },
   {
     id: 4,
     icon: health,
-    pageName: 'Safety and Health',
+    title: 'Safety and Health',
     routeName: 'Health',
+    data: [],
   },
   {
     id: 5,
     icon: humanResources,
-    pageName: 'HR',
+    title: 'HR',
     routeName: 'HR',
+    data: [],
   },
   {
     id: 6,
     icon: technicalGuide,
-    pageName: 'Technical Guide',
+    title: 'Technical Guide',
     routeName: 'TechnicalGuide',
+    data: [],
   },
 ];
