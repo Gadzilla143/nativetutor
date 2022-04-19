@@ -12,7 +12,7 @@ const SEARCH_INPUT_PLACEHOLDER = 'Search for company info';
 
 export const SearchInput = ({navigation}) => {
   const [searchValue, setSearchValue] = useState('');
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isSearchListOpen, setIsSearchListOpen] = useState(false);
   const [sectionsData, setSectionsData] = useState(getFullSectionsData());
   const textInput = useRef();
 
@@ -39,10 +39,10 @@ export const SearchInput = ({navigation}) => {
           value={searchValue}
           placeholder={SEARCH_INPUT_PLACEHOLDER}
           ref={textInput}
-          onFocus={() => setIsSearchOpen(true)}
+          onFocus={() => setIsSearchListOpen(true)}
         />
       </View>
-      {isSearchOpen && (
+      {isSearchListOpen && (
         <SearchDropdownList
           sectionsData={sectionsData}
           navigation={navigation}
