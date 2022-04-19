@@ -1,6 +1,7 @@
 import React from "react";
 import {ScrollView, StyleSheet, Text, View} from "react-native";
 import {COLORS, SIZES} from "../../constants/style";
+import {Like} from "../../components/Like/Like";
 
 export const DiscountDescPageBody = ({discountData}) => {
     return (
@@ -8,6 +9,7 @@ export const DiscountDescPageBody = ({discountData}) => {
             style={styles.container}
         >
             <View style={styles.paddings}>
+                <Like id={discountData?.id}/>
                 <Text style={styles.title}>
                     {discountData?.title}
                 </Text>

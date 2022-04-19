@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         borderRadius: 40,
         borderWidth: 2,
         borderStyle: 'solid',
-        borderColor: COLORS.DARK_GREY,
+        borderColor: COLORS.LIGHT_BLUE,
         alignSelf: 'center',
         zIndex: 1
     },
