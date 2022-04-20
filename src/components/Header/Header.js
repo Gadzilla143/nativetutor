@@ -3,19 +3,27 @@ import {Text, View, StyleSheet, Image} from 'react-native';
 import {COLORS, FONT_FAMILY, SIZES} from '../../constants/style';
 import {account, logo} from '../../constants/header_constants';
 import {CircleImage} from '../CircleImage/CircleImage';
-import {Search} from '../SearchComponent/Search';
 import LinearGradient from 'react-native-linear-gradient';
+import {SearchInput} from '../SearchInput/SearchInput';
 
 const APP_NAME = 'LAsk';
 
-export const Header = () => {
+export const Header = ({
+  navigation,
+  setIsPressOnSearchArea,
+  isPressOnSearchArea,
+}) => {
   return (
     <LinearGradient
       colors={[COLORS.DARK_BLUE, COLORS.LIGHT_BLUE]}
       style={styles.header}
       start={{x: 0, y: 0}}
       end={{x: 1, y: 1}}>
-      <View style={styles.headerTopContainer}>
+      <View
+        style={[
+          styles.headerTopContainer,
+          isPressOnSearchArea ? styles.hideComponent : styles.showComponent,
+        ]}>
         <View style={styles.headerLogoContainer}>
           <Image source={logo} style={styles.pageIcon} />
           <Text style={styles.appName}>{APP_NAME}</Text>
@@ -24,7 +32,14 @@ export const Header = () => {
           <CircleImage image={account} imageColor={COLORS.WHITE} />
         </View>
       </View>
-      <Search />
+
+      <View style={styles.searchContainer}>
+        <SearchInput
+          navigation={navigation}
+          isPressOnSearchArea={isPressOnSearchArea}
+          setIsPressOnSearchArea={setIsPressOnSearchArea}
+        />
+      </View>
     </LinearGradient>
   );
 };
@@ -54,5 +69,15 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     color: COLORS.WHITE,
     fontWeight: 'bold',
+  },
+  searchContainer: {
+    flexDirection: 'row',
+    height: 60,
+  },
+  showComponent: {
+    display: 'flex',
+  },
+  hideComponent: {
+    display: 'none',
   },
 });
