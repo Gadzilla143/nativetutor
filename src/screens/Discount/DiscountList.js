@@ -5,7 +5,7 @@ import React from 'react';
 import {SIZES} from '../../constants/style';
 
 export const DiscountList = ({navigation}) => {
-  const numColumns = DISCOUNTS_DATA.length === 2 ? 1 : 2;
+    const numColumns = DISCOUNTS_DATA.length === 2 ? 1 : 2;
   const renderDiscountCard = ({item}) => {
     return (
       <DiscountCard
