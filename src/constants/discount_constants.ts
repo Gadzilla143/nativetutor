@@ -58,6 +58,7 @@ export const DISCOUNTS_DATA: IData = {
       {
         id: 1,
         title: 'АртСуши',
+        routeName: 'ArtSushi',
         socialLinks: {
           site: 'http://artsushi.by/',
         },
@@ -77,6 +78,7 @@ export const DISCOUNTS_DATA: IData = {
       {
         id: 2,
         title: 'Wok.by',
+        routeName: 'WokBy',
         socialLinks: {
           site: 'http://wok.by',
         },
@@ -96,6 +98,7 @@ export const DISCOUNTS_DATA: IData = {
       {
         id: 3,
         title: 'Пловберри',
+        routeName: 'Plovberry',
         socialLinks: {
           site: 'https://plovberry.by',
         },
@@ -111,6 +114,7 @@ export const DISCOUNTS_DATA: IData = {
       {
         id: 4,
         title: 'TOKINY',
+        routeName: 'Tokiny',
         socialLinks: {
           site: 'https://tokiny.by',
         },
@@ -134,6 +138,7 @@ export const DISCOUNTS_DATA: IData = {
       {
         id: 5,
         title: "Papa John's",
+        routeName: 'PapaJohns',
         socialLinks: {
           site: 'https://www.papajohns.by/',
           instagram: 'https://www.instagram.com/papajohnsby/',
@@ -150,6 +155,7 @@ export const DISCOUNTS_DATA: IData = {
       {
         id: 6,
         title: 'Healthy Plan',
+        routeName: 'HealthyPlan',
         socialLinks: {
           site: 'www.healthyplan.by',
         },
@@ -168,6 +174,7 @@ export const DISCOUNTS_DATA: IData = {
       {
         id: 7,
         title: "Domino's Pizza",
+        routeName: 'DominosPizza',
         socialLinks: {
           site: 'https://dominos.by/',
         },
