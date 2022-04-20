@@ -51,21 +51,19 @@ export const SearchDropdownList = ({
   );
 
   return (
-    <View>
-      <SectionList
-        sections={sectionsData}
-        style={styles.searchListContainer}
-        renderItem={({item}) => renderSearchItem(item)}
-        renderSectionHeader={({section}) => {
-          if (section.data.length === 0) {
-            return;
-          }
-          return renderSectionHeader(section.sectionTitle);
-        }}
-        ListEmptyComponent={() => renderEmptySearchResultMessage()}
-        keyExtractor={item => item.title}
-      />
-    </View>
+    <SectionList
+      sections={sectionsData}
+      style={styles.searchListContainer}
+      renderItem={({item}) => renderSearchItem(item)}
+      renderSectionHeader={({section}) => {
+        if (section.data.length === 0) {
+          return;
+        }
+        return renderSectionHeader(section.sectionTitle);
+      }}
+      ListEmptyComponent={() => renderEmptySearchResultMessage()}
+      keyExtractor={item => item.title}
+    />
   );
 };
 
@@ -75,8 +73,8 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.WHITE,
     position: 'absolute',
     width: '100%',
-    maxHeight: '100%',
-    top: 2,
+    height: '400%',
+    top: 62,
     borderColor: COLORS.LIGHT_BLUE,
     borderWidth: 2,
   },
