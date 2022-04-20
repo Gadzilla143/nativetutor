@@ -13,7 +13,7 @@ export const PAGES_DATA = [
     icon: discount,
     title: 'Discount Club',
     routeName: 'Discount',
-    data: DISCOUNTS_DATA,
+    data: DISCOUNTS_DATA.discounts.minsk,
   },
   {
     id: 2,

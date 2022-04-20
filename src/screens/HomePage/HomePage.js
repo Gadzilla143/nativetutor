@@ -1,10 +1,5 @@
 import React, {useState} from 'react';
-import {
-  Keyboard,
-  StyleSheet,
-  TouchableWithoutFeedback,
-  View,
-} from 'react-native';
+import {Keyboard, StyleSheet, View} from 'react-native';
 import {Header} from '../../components/Header/Header';
 import {HomePageContent} from '../../components/HomePageContent/HomePageContent';
 import {useKeyboardVisibility} from '../../hooks/useKeyboardVisibility';
@@ -15,20 +10,19 @@ export const HomePage = ({navigation}) => {
   const isKeyboardVisible = useKeyboardVisibility();
 
   return (
-    <TouchableWithoutFeedback
-      onPress={() => {
+    <View
+      style={styles.body}
+      onStartShouldSetResponder={() => {
         setIsPressOnSearchArea(false);
         isKeyboardVisible ? Keyboard.dismiss() : null;
       }}>
-      <View style={styles.body}>
-        <HomePageContent navigation={navigation} />
-        <Header
-          navigation={navigation}
-          isPressOnSearchArea={isPressOnSearchArea}
-          setIsPressOnSearchArea={setIsPressOnSearchArea}
-        />
-      </View>
-    </TouchableWithoutFeedback>
+      <HomePageContent navigation={navigation} />
+      <Header
+        navigation={navigation}
+        isPressOnSearchArea={isPressOnSearchArea}
+        setIsPressOnSearchArea={setIsPressOnSearchArea}
+      />
+    </View>
   );
 };
 
