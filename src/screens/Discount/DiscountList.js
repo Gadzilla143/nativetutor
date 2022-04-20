@@ -6,7 +6,8 @@ import {SIZES} from "../../constants/style";
 
 
 export const DiscountList = ({ navigation }) => {
-    const numColumns = DISCOUNTS_DATA.length === 2 ? 1 : 2;
+    const data = DISCOUNTS_DATA.discounts.minsk;
+    const numColumns = data.length === 2 ? 1 : 2;
     const renderDiscountCard = ({item}) => {
         return (
             <DiscountCard
@@ -16,13 +17,14 @@ export const DiscountList = ({ navigation }) => {
                 })}
             />)
     }
-    return <FlatList
-        data={DISCOUNTS_DATA}
+    return (
+        <FlatList
+        data={data}
         keyExtractor={item => `${item.id}`}
         renderItem={renderDiscountCard}
         numColumns={numColumns}
         contentContainerStyle={styles.container}
-    />
+        />)
 }
 
 const styles = StyleSheet.create({
