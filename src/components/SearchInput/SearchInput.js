@@ -1,11 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {
-  View,
-  StyleSheet,
-  TextInput,
-  Image,
-  TouchableWithoutFeedback,
-} from 'react-native';
+import {View, StyleSheet, TextInput, Image} from 'react-native';
 import {COLORS, FONT_FAMILY, SIZES} from '../../constants/style';
 import {search} from '../../constants/header_constants';
 import {
@@ -38,27 +32,27 @@ export const SearchInput = ({
   }, [searchValue]);
 
   return (
-    <TouchableWithoutFeedback onPress={() => setIsPressOnSearchArea(true)}>
-      <View style={styles.searchBarContainer}>
-        <View style={styles.searchInputContainer}>
-          <Image source={search} style={styles.searchIcon} />
-          <TextInput
-            style={styles.searchInput}
-            onChangeText={setSearchPhrase}
-            value={searchValue}
-            placeholder={SEARCH_INPUT_PLACEHOLDER}
-            onFocus={() => setIsPressOnSearchArea(true)}
-          />
-        </View>
-        {isPressOnSearchArea && (
-          <SearchDropdownList
-            sectionsData={sectionsData}
-            navigation={navigation}
-            setIsSearchListOpen={setIsPressOnSearchArea}
-          />
-        )}
+    <View
+      style={styles.searchBarContainer}
+      onStartShouldSetResponder={() => setIsPressOnSearchArea(true)}>
+      <View style={styles.searchInputContainer}>
+        <Image source={search} style={styles.searchIcon} />
+        <TextInput
+          style={styles.searchInput}
+          onChangeText={setSearchPhrase}
+          value={searchValue}
+          placeholder={SEARCH_INPUT_PLACEHOLDER}
+          onFocus={() => setIsPressOnSearchArea(true)}
+        />
       </View>
-    </TouchableWithoutFeedback>
+      {isPressOnSearchArea && (
+        <SearchDropdownList
+          sectionsData={sectionsData}
+          navigation={navigation}
+          setIsSearchListOpen={setIsPressOnSearchArea}
+        />
+      )}
+    </View>
   );
 };
 
