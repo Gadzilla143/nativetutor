@@ -1,5 +1,11 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {View, StyleSheet, TextInput, Image} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {
+  View,
+  StyleSheet,
+  TextInput,
+  Image,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import {COLORS, FONT_FAMILY, SIZES} from '../../constants/style';
 import {search} from '../../constants/header_constants';
 import {
@@ -10,13 +16,15 @@ import {SearchDropdownList} from './SearchDropdownList/SearchDropdownList';
 
 const SEARCH_INPUT_PLACEHOLDER = 'Search for company info';
 
-export const SearchInput = ({navigation}) => {
+export const SearchInput = ({
+  navigation,
+  isPressOnSearchArea,
+  setIsPressOnSearchArea,
+}) => {
   const [searchValue, setSearchValue] = useState('');
-  const [isSearchListOpen, setIsSearchListOpen] = useState(false);
   const [sectionsData, setSectionsData] = useState(getFullSectionsData());
-  const textInput = useRef();
 
-  const onChangeHandler = value => {
+  const setSearchPhrase = value => {
     setSearchValue(value);
   };
 
@@ -30,25 +38,27 @@ export const SearchInput = ({navigation}) => {
   }, [searchValue]);
 
   return (
-    <View style={styles.searchBarContainer}>
-      <View style={styles.searchInputContainer}>
-        <Image source={search} style={styles.searchIcon} />
-        <TextInput
-          style={styles.searchInput}
-          onChangeText={onChangeHandler}
-          value={searchValue}
-          placeholder={SEARCH_INPUT_PLACEHOLDER}
-          ref={textInput}
-          onFocus={() => setIsSearchListOpen(true)}
-        />
+    <TouchableWithoutFeedback onPress={() => setIsPressOnSearchArea(true)}>
+      <View style={styles.searchBarContainer}>
+        <View style={styles.searchInputContainer}>
+          <Image source={search} style={styles.searchIcon} />
+          <TextInput
+            style={styles.searchInput}
+            onChangeText={setSearchPhrase}
+            value={searchValue}
+            placeholder={SEARCH_INPUT_PLACEHOLDER}
+            onFocus={() => setIsPressOnSearchArea(true)}
+          />
+        </View>
+        {isPressOnSearchArea && (
+          <SearchDropdownList
+            sectionsData={sectionsData}
+            navigation={navigation}
+            setIsSearchListOpen={setIsPressOnSearchArea}
+          />
+        )}
       </View>
-      {isSearchListOpen && (
-        <SearchDropdownList
-          sectionsData={sectionsData}
-          navigation={navigation}
-        />
-      )}
-    </View>
+    </TouchableWithoutFeedback>
   );
 };
 
