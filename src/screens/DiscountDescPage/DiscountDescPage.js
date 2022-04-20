@@ -9,12 +9,13 @@ import {DiscountDescPageBody} from "./DiscountDescPageBody";
 
 export const DiscountDescPage = ({route, navigation}) => {
     const { itemId } = route.params;
+    const data = DISCOUNTS_DATA.discounts.minsk;
     const [discountData, setDiscountData] = useState(null);
 
 
     useEffect(() => {
         //API call here
-        setDiscountData(DISCOUNTS_DATA.filter(item => item.id === itemId)[0])
+        setDiscountData(data.filter(item => item.id === itemId)[0])
     }, [])
 
     return (
