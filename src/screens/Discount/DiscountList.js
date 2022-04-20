@@ -17,13 +17,14 @@ export const DiscountList = ({ navigation }) => {
                 })}
             />)
     }
-    return <FlatList
+    return (
+        <FlatList
         data={data}
         keyExtractor={item => `${item.id}`}
         renderItem={renderDiscountCard}
         numColumns={numColumns}
         contentContainerStyle={styles.container}
-    />
+        />)
 }
 
 const styles = StyleSheet.create({
