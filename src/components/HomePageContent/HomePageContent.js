@@ -24,16 +24,16 @@ export const HomePageContent = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
+  contentBody: {
+    flex: 2,
+    paddingTop: 20,
+    paddingHorizontal: 30,
+  },
   contentHeader: {
     ...FONT_FAMILY,
     fontSize: SIZES.h3,
     fontWeight: 'bold',
     paddingBottom: 20,
     color: COLORS.DARK,
-  },
-  contentBody: {
-    flex: 2,
-    paddingTop: 20,
-    paddingHorizontal: 30,
   },
 });
