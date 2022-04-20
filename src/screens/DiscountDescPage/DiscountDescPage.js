@@ -28,19 +28,20 @@ export const DiscountDescPage = ({route, navigation}) => {
 };
 
 const styles = StyleSheet.create({
-  wrapper: {
-    backgroundColor: 'white',
-  },
-  logo: {
-    position: 'absolute',
-    marginTop: 80,
-    width: SIZES.WIDTH / 2,
-    height: SIZES.WIDTH / 2,
-    borderRadius: 40,
-    borderWidth: 2,
-    borderStyle: 'solid',
-    borderColor: COLORS.DARK_GREY,
-    alignSelf: 'center',
-    zIndex: 1,
-  },
-});
+    wrapper: {
+        backgroundColor: 'white',
+    },
+    logo: {
+        position: 'absolute',
+        marginTop: 80,
+        width: SIZES.WIDTH / 2,
+        height: SIZES.WIDTH / 2,
+        borderRadius: 40,
+        borderWidth: 2,
+        borderStyle: 'solid',
+        borderColor: COLORS.LIGHT_BLUE,
+        alignSelf: 'center',
+        zIndex: 1
+    },
+})
+
