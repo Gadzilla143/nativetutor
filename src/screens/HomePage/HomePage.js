@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import {Keyboard, StyleSheet, View} from 'react-native';
 import {Header} from '../../components/Header/Header';
-import {HomePageContent} from '../../components/HomePageContent/HomePageContent';
+import {NestedDropdown} from '../../components/NestedDropdown/NestedDropdown';
 import {useKeyboardVisibility} from '../../hooks/useKeyboardVisibility';
+import {PAGES_DATA} from '../../constants/page_constants';
 
 export const HomePage = ({navigation}) => {
   const [isPressOnSearchArea, setIsPressOnSearchArea] = useState(false);
@@ -16,7 +17,7 @@ export const HomePage = ({navigation}) => {
         setIsPressOnSearchArea(false);
         isKeyboardVisible ? Keyboard.dismiss() : null;
       }}>
-      <HomePageContent navigation={navigation} />
+      <NestedDropdown navigation={navigation} data={PAGES_DATA} />
       <Header
         navigation={navigation}
         isPressOnSearchArea={isPressOnSearchArea}

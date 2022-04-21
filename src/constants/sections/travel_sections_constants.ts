@@ -5,18 +5,18 @@ export const TRAVEL_SECTIONS_DATA: ISectionData[] = [
     id: 1,
     title: 'Hotels',
     routeName: 'Hotels',
-    sectionData: [],
+    data: [],
   },
   {
     id: 2,
     title: 'Travel Policy',
     routeName: 'TravelPolicy',
-    sectionData: [],
+    data: [],
   },
   {
     id: 3,
     title: 'Visa Policy',
     routeName: 'VisaPolicy',
-    sectionData: [],
+    data: [],
   },
 ];

@@ -1,17 +1,17 @@
-import {IDeliveryDiscountData} from './delivery.types';
+import {IDiscountData} from './discount.types';
 
-type TSectionData = [] | IDeliveryDiscountData[];
+type TSectionData = [] | IDiscountData[];
 
 export type ISectionData = {
   id: number;
   title: string;
   routeName: string;
-  sectionData: TSectionData;
+  data: TSectionData;
 };
 
 export type IPageData =
   | ISectionData
   | {
       icon: HTMLImageElement;
-      topicsData: ISectionData[] | [];
+      data: ISectionData[] | [];
     };

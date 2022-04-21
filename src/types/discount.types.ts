@@ -6,7 +6,7 @@ interface IDiscountLinks {
   ok?: string;
 }
 
-export interface IDeliveryDiscountData {
+export interface IDiscountData {
   id: number;
   title: string;
   socialLinks: IDiscountLinks;
@@ -30,5 +30,5 @@ enum ECities {
 type TCities = keyof ECities[keyof ECities];
 
 export type IDiscountCities = {
-  [key in TCities]: IDeliveryDiscountData[] | [];
+  [key in TCities]: IDiscountData[] | [];
 };

@@ -1,4 +1,4 @@
-import {IDiscountCities} from '../../types/delivery.types';
+import {IDiscountCities} from '../../types/discount.types';
 
 export const artsushi = require('../../assets/discounts/artsushi.jpg');
 export const wok = require('../../assets/discounts/wok.jpg');

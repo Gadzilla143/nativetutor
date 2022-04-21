@@ -1,5 +1,5 @@
-import {DISCOUNT_SECTIONS_DATA} from './cestions/discount_club_sections_constants';
-import {TRAVEL_SECTIONS_DATA} from './cestions/travel_sections_constants';
+import {DISCOUNT_SECTIONS_DATA} from './sections/discount_club_sections_constants';
+import {TRAVEL_SECTIONS_DATA} from './sections/travel_sections_constants';
 import {IPageData} from '../types/page.types';
 
 export const travel = require('../assets/pagesIcons/travel.png');
@@ -15,41 +15,41 @@ export const PAGES_DATA: IPageData[] = [
     icon: discount,
     title: 'Discount Club | Minsk',
     routeName: 'DiscountMinsk',
-    topicsData: DISCOUNT_SECTIONS_DATA,
+    data: DISCOUNT_SECTIONS_DATA,
   },
   {
     id: 2,
     icon: travel,
     title: 'Travel',
     routeName: 'Travel',
-    topicsData: TRAVEL_SECTIONS_DATA,
+    data: TRAVEL_SECTIONS_DATA,
   },
   {
     id: 3,
     icon: fruits,
     title: 'Fruits Delivery',
     routeName: 'Fruits',
-    topicsData: [],
+    data: [],
   },
   {
     id: 4,
     icon: health,
     title: 'Safety and Health',
     routeName: 'Health',
-    topicsData: [],
+    data: [],
   },
   {
     id: 5,
     icon: humanResources,
     title: 'HR',
     routeName: 'HR',
-    topicsData: [],
+    data: [],
   },
   {
     id: 6,
     icon: technicalGuide,
     title: 'Technical Guide',
     routeName: 'TechnicalGuide',
-    topicsData: [],
+    data: [],
   },
 ];
