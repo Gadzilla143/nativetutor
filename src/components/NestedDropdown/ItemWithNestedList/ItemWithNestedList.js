@@ -14,14 +14,25 @@ import icons from '../../../constants/icons';
 export const ItemWithNestedList = ({itemWithNestedList, navigation}) => {
   const [isSectionOpen, setIsSectionOpen] = useState(false);
 
+  const getNestedItemInfo = item => {
+    if (item.data.length === 0) {
+      navigation.navigate('EmptyPage');
+      return;
+    }
+
+    navigation.navigate(item.routeName, {
+      data: item.data,
+    });
+  };
+
   const renderNestedItem = ({item}) => {
     return (
       <TouchableOpacity
         activeOpacity={0.7}
         delayPressIn={0}
-        onPress={() => navigation.navigate(item.routeName)}>
+        onPress={() => getNestedItemInfo(item)}>
         <View style={styles.nestedListItem}>
-          <Text style={styles.pageName}>{item.title}</Text>
+          <Text style={styles.pageName}>{item.engTitle}</Text>
           <Image source={icons.rightArrow} style={styles.rightArrow} />
         </View>
       </TouchableOpacity>
@@ -39,7 +50,7 @@ export const ItemWithNestedList = ({itemWithNestedList, navigation}) => {
             image={itemWithNestedList.icon}
             imageColor={COLORS.BLUE}
           />
-          <Text style={styles.pageName}>{itemWithNestedList.title}</Text>
+          <Text style={styles.pageName}>{itemWithNestedList.engTitle}</Text>
         </View>
       </TouchableOpacity>
       {isSectionOpen && (

@@ -3,20 +3,23 @@ import {ISectionData} from '../../types/page.types';
 export const TRAVEL_SECTIONS_DATA: ISectionData[] = [
   {
     id: 1,
-    title: 'Hotels',
-    routeName: 'Hotels',
+    engTitle: 'Hotels',
+    rusTitle: 'Отели',
+    routeName: 'Travel',
     data: [],
   },
   {
     id: 2,
-    title: 'Travel Policy',
-    routeName: 'TravelPolicy',
+    engTitle: 'Travel Policy',
+    rusTitle: 'Политика путешествий',
+    routeName: 'Travel',
     data: [],
   },
   {
     id: 3,
-    title: 'Visa Policy',
-    routeName: 'VisaPolicy',
+    engTitle: 'Visa Policy',
+    rusTitle: 'Визовая политика',
+    routeName: 'Travel',
     data: [],
   },
 ];

@@ -4,7 +4,8 @@ type TSectionData = [] | IDiscountData[];
 
 export type ISectionData = {
   id: number;
-  title: string;
+  engTitle: string;
+  rusTitle: string;
   routeName: string;
   data: TSectionData;
 };

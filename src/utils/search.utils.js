@@ -18,8 +18,7 @@ export const getFullSectionsData = () => {
     (prevTopics, currentTopicData) => [
       ...prevTopics,
       {
-        title: currentTopicData.title,
-        routeName: currentTopicData.routeName,
+        ...currentTopicData,
         anchoredSection: TOPICS_SECTION_TITLE,
       },
     ],
@@ -37,8 +36,7 @@ export const getFullSectionsData = () => {
     (prevDetailedInfo, currentDetailedInfo) => [
       ...prevDetailedInfo,
       {
-        title: currentDetailedInfo.title,
-        routeName: currentDetailedInfo.routeName,
+        ...currentDetailedInfo,
         anchoredSection: DETAILED_INFO_SECTION_TITLE,
       },
     ],
@@ -62,8 +60,8 @@ export const getFilteredSectionsData = searchValue => {
   const filteredData = getFullSectionsData().map(sectionData => {
     const filteredSectionData = sectionData.data.filter(
       data =>
-        findSearchString(data.title, searchValue) ||
-        findSearchString(data.routeName, searchValue),
+        findSearchString(data.engTitle, searchValue) ||
+        findSearchString(data.rusTitle, searchValue),
     );
 
     return {...sectionData, data: filteredSectionData};

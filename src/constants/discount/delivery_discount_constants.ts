@@ -12,8 +12,9 @@ export const DELIVERY_DISCOUNTS_DATA: IDiscountCities = {
   minsk: [
     {
       id: 1,
-      title: 'АртСуши',
-      routeName: 'ArtSushi',
+      rusTitle: 'АртСуши',
+      engTitle: 'ArtSushi',
+      routeName: 'DiscountDesc',
       socialLinks: {
         site: 'http://artsushi.by/',
       },
@@ -32,8 +33,9 @@ export const DELIVERY_DISCOUNTS_DATA: IDiscountCities = {
     },
     {
       id: 2,
-      title: 'Wok.by',
-      routeName: 'WokBy',
+      rusTitle: 'Вок.бай',
+      engTitle: 'Wok.by',
+      routeName: 'DiscountDesc',
       socialLinks: {
         site: 'http://wok.by',
       },
@@ -52,8 +54,9 @@ export const DELIVERY_DISCOUNTS_DATA: IDiscountCities = {
     },
     {
       id: 3,
-      title: 'Пловберри',
-      routeName: 'Plovberry',
+      rusTitle: 'Пловберри',
+      engTitle: 'Plovberry',
+      routeName: 'DiscountDesc',
       socialLinks: {
         site: 'https://plovberry.by',
       },
@@ -68,8 +71,9 @@ export const DELIVERY_DISCOUNTS_DATA: IDiscountCities = {
     },
     {
       id: 4,
-      title: 'TOKINY',
-      routeName: 'Tokiny',
+      rusTitle: 'Токини',
+      engTitle: 'TOKINY',
+      routeName: 'DiscountDesc',
       socialLinks: {
         site: 'https://tokiny.by',
       },
@@ -92,8 +96,9 @@ export const DELIVERY_DISCOUNTS_DATA: IDiscountCities = {
     },
     {
       id: 5,
-      title: "Papa John's",
-      routeName: 'PapaJohns',
+      rusTitle: 'Папа Джонс',
+      engTitle: "Papa John's",
+      routeName: 'DiscountDesc',
       socialLinks: {
         site: 'https://www.papajohns.by/',
         instagram: 'https://www.instagram.com/papajohnsby/',
@@ -109,8 +114,9 @@ export const DELIVERY_DISCOUNTS_DATA: IDiscountCities = {
     },
     {
       id: 6,
-      title: 'Healthy Plan',
-      routeName: 'HealthyPlan',
+      rusTitle: 'Здоровый план',
+      engTitle: 'Healthy Plan',
+      routeName: 'DiscountDesc',
       socialLinks: {
         site: 'www.healthyplan.by',
       },
@@ -128,8 +134,9 @@ export const DELIVERY_DISCOUNTS_DATA: IDiscountCities = {
     },
     {
       id: 7,
-      title: "Domino's Pizza",
-      routeName: 'DominosPizza',
+      rusTitle: 'Доминос пицца',
+      engTitle: "Domino's Pizza",
+      routeName: 'DiscountDesc',
       socialLinks: {
         site: 'https://dominos.by/',
       },
