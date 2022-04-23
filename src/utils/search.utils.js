@@ -12,19 +12,20 @@ const INITIAL_SECTIONS_DATA = [
 ];
 
 export const getFullSectionsData = () => {
-  const topicsData = PAGES_DATA.reduce(
+  const sectionsData = PAGES_DATA.map(pageData => pageData.data).flat();
+
+  const topicsData = sectionsData.reduce(
     (prevTopics, currentTopicData) => [
       ...prevTopics,
       {
-        title: currentTopicData.title,
-        routeName: currentTopicData.routeName,
+        ...currentTopicData,
         anchoredSection: TOPICS_SECTION_TITLE,
       },
     ],
     [],
   );
 
-  const pagesData = PAGES_DATA.reduce(
+  const pagesData = sectionsData.reduce(
     (prevPagesData, currentPageData) => [
       ...prevPagesData,
       ...currentPageData.data,
@@ -35,8 +36,7 @@ export const getFullSectionsData = () => {
     (prevDetailedInfo, currentDetailedInfo) => [
       ...prevDetailedInfo,
       {
-        title: currentDetailedInfo.title,
-        routeName: currentDetailedInfo.routeName,
+        ...currentDetailedInfo,
         anchoredSection: DETAILED_INFO_SECTION_TITLE,
       },
     ],
@@ -60,8 +60,8 @@ export const getFilteredSectionsData = searchValue => {
   const filteredData = getFullSectionsData().map(sectionData => {
     const filteredSectionData = sectionData.data.filter(
       data =>
-        findSearchString(data.title, searchValue) ||
-        findSearchString(data.routeName, searchValue),
+        findSearchString(data.engTitle, searchValue) ||
+        findSearchString(data.rusTitle, searchValue),
     );
 
     return {...sectionData, data: filteredSectionData};

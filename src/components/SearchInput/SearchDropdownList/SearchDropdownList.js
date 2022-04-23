@@ -20,13 +20,20 @@ export const SearchDropdownList = ({
     setIsSearchListOpen(false);
 
     if (item.anchoredSection === DETAILED_INFO_SECTION_TITLE) {
-      navigation.navigate('DiscountDesc', {
-        itemRouteName: item.routeName,
+      navigation.navigate(item.routeName, {
+        data: item,
       });
       return;
     }
 
-    navigation.navigate(item.routeName);
+    if (item.data.length === 0) {
+      navigation.navigate('EmptyPage');
+      return;
+    }
+
+    navigation.navigate(item.routeName, {
+      data: item.data,
+    });
   };
 
   const renderSearchItem = item => (
@@ -34,7 +41,7 @@ export const SearchDropdownList = ({
       activeOpacity={0.7}
       onPress={() => searchItemPressHandler(item)}
       style={styles.item}>
-      <Text style={styles.title}>{item.title}</Text>
+      <Text style={styles.title}>{item.engTitle}</Text>
     </TouchableOpacity>
   );
 
@@ -62,7 +69,7 @@ export const SearchDropdownList = ({
         return renderSectionHeader(section.sectionTitle);
       }}
       ListEmptyComponent={() => renderEmptySearchResultMessage()}
-      keyExtractor={item => item.title}
+      keyExtractor={item => item.engTitle}
     />
   );
 };

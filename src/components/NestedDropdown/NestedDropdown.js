@@ -1,22 +1,23 @@
 import React from 'react';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
-import {PAGES_DATA} from '../../constants/page_constants';
-import {HomePageContentItem} from './HomePageContentItem/HomePageContentItem';
+import {ItemWithNestedList} from './ItemWithNestedList/ItemWithNestedList';
 import {COLORS, FONT_FAMILY, SIZES} from '../../constants/style';
 
-const HOME_PAGE_CONTENT_HEADER = 'Pages';
+const NESTED_DROPDOWN_HEADER = 'Pages';
 
-export const HomePageContent = ({navigation}) => {
-  const renderItem = ({item}) => (
-    <HomePageContentItem item={item} navigation={navigation} />
-  );
+export const NestedDropdown = ({navigation, data}) => {
+  const renderItemWithNestedList = ({item}) => {
+    return (
+      <ItemWithNestedList itemWithNestedList={item} navigation={navigation} />
+    );
+  };
 
   return (
     <View style={styles.contentBody}>
-      <Text style={styles.contentHeader}>{HOME_PAGE_CONTENT_HEADER}</Text>
+      <Text style={styles.contentHeader}>{NESTED_DROPDOWN_HEADER}</Text>
       <FlatList
-        data={PAGES_DATA}
-        renderItem={renderItem}
+        data={data}
+        renderItem={renderItemWithNestedList}
         keyExtractor={item => item.id}
       />
     </View>

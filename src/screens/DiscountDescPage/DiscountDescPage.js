@@ -4,19 +4,20 @@ import {StyleSheet, View, Image} from 'react-native';
 import {DiscountHeader} from '../Discount/DiscountHeader';
 
 import {COLORS, SIZES} from '../../constants/style';
-import {DISCOUNTS_DATA} from '../../constants/discount_constants';
 import {DiscountDescPageBody} from './DiscountDescPageBody';
 
 export const DiscountDescPage = ({route, navigation}) => {
-    const {itemRouteName} = route.params;
-    const data = DISCOUNTS_DATA.discounts.minsk;
-    const [discountData, setDiscountData] = useState(null);
+  const {itemRouteName, data} = route.params;
+  const [discountData, setDiscountData] = useState(null);
 
+  useEffect(() => {
+    //API call here
+    const discountInfo = data.length
+      ? data.filter(item => item.routeName === itemRouteName)[0]
+      : data;
 
-    useEffect(() => {
-        //API call here
-        setDiscountData(data.filter(item => item.routeName === itemRouteName)[0])
-    }, [])
+    setDiscountData(discountInfo);
+  }, []);
 
   return (
     <View style={styles.wrapper}>
@@ -28,20 +29,19 @@ export const DiscountDescPage = ({route, navigation}) => {
 };
 
 const styles = StyleSheet.create({
-    wrapper: {
-        backgroundColor: 'white',
-    },
-    logo: {
-        position: 'absolute',
-        marginTop: 80,
-        width: SIZES.WIDTH / 2,
-        height: SIZES.WIDTH / 2,
-        borderRadius: 40,
-        borderWidth: 2,
-        borderStyle: 'solid',
-        borderColor: COLORS.LIGHT_BLUE,
-        alignSelf: 'center',
-        zIndex: 1
-    },
-})
-
+  wrapper: {
+    backgroundColor: 'white',
+  },
+  logo: {
+    position: 'absolute',
+    marginTop: 80,
+    width: SIZES.WIDTH / 2,
+    height: SIZES.WIDTH / 2,
+    borderRadius: 40,
+    borderWidth: 2,
+    borderStyle: 'solid',
+    borderColor: COLORS.LIGHT_BLUE,
+    alignSelf: 'center',
+    zIndex: 1,
+  },
+});
