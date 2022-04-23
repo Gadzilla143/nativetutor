@@ -8,9 +8,9 @@ import {MAP_LOCATIONS, MAP_MARKERS} from "../../constants/map_constants";
 export const MapPage = ({navigation}) => {
     let mapRef = createRef();
     const animate = region => {
-        if (mapRef) {
-            mapRef.current.animateToRegion(region, 2000)
-        }
+      if (mapRef) {
+        mapRef.current.animateToRegion(region, 2000)
+      }
     }
     return (
         <View>
