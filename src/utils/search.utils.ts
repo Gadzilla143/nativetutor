@@ -17,8 +17,10 @@ const INITIAL_SECTIONS_DATA: IInitialSectionData[] = [
 ];
 
 export const getFullSectionsData = (): IInitialSectionData[] => {
-  const sectionsData: ISectionData[] = PAGES_DATA.map(
-    pageData => pageData.data as ISectionData[],
+  const sectionsData: ISectionData[] = PAGES_DATA.reduce(
+    (prevPagesData, pageData) =>
+      pageData.data ? [...prevPagesData, ...pageData.data] : prevPagesData,
+    [] as ISectionData[],
   ).flat();
 
   const topicsData = sectionsData.reduce(
@@ -33,10 +35,10 @@ export const getFullSectionsData = (): IInitialSectionData[] => {
   );
 
   const pagesData = sectionsData.reduce(
-    (prevPagesData, currentPageData) => [
-      ...prevPagesData,
-      ...currentPageData.data,
-    ],
+    (prevPagesData, currentPageData) =>
+      currentPageData
+        ? [...prevPagesData, ...currentPageData.data]
+        : prevPagesData,
     [] as IDiscountData[],
   );
 

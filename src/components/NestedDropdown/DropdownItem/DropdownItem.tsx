@@ -25,7 +25,7 @@ export const DropdownItem = ({
 }) => {
   const [isSectionOpen, setIsSectionOpen] = useState(false);
 
-  const checkIfItemHasNestedList = !!dropdownItem.data;
+  const checkIfItemHasNestedList = !dropdownItem.routeName;
 
   const dropdownItemPressHandler = () => {
     if (checkIfItemHasNestedList) {
