@@ -50,6 +50,7 @@ export const PAGES_DATA: IPageData[] = [
     icon: technicalGuide,
     engTitle: 'Technical Guide',
     rusTitle: 'Тухническая помощь',
+    routeName: 'EmptyPage',
     data: [],
   },
 ];

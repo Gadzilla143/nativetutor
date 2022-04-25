@@ -1,6 +1,6 @@
 import React from 'react';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
-import {ItemWithNestedList} from './ItemWithNestedList/ItemWithNestedList';
+import {DropdownItem} from './DropdownItem/DropdownItem';
 import {COLORS, FONT_FAMILY, SIZES} from '../../constants/style';
 import {HomePageScreenNavigationProp} from '../../types/navigation.types';
 import {IPageData} from '../../types/page.types';
@@ -14,10 +14,8 @@ export const NestedDropdown = ({
   navigation: HomePageScreenNavigationProp;
   data: IPageData[];
 }) => {
-  const renderItemWithNestedList = ({item}: {item: IPageData}) => {
-    return (
-      <ItemWithNestedList itemWithNestedList={item} navigation={navigation} />
-    );
+  const renderDropdownItem = ({item}: {item: IPageData}) => {
+    return <DropdownItem dropdownItem={item} navigation={navigation} />;
   };
 
   return (
@@ -25,7 +23,7 @@ export const NestedDropdown = ({
       <Text style={styles.contentHeader}>{NESTED_DROPDOWN_HEADER}</Text>
       <FlatList
         data={data}
-        renderItem={renderItemWithNestedList}
+        renderItem={renderDropdownItem}
         keyExtractor={item => item.id}
       />
     </View>

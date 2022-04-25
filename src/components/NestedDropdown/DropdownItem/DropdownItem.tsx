@@ -16,14 +16,25 @@ import {
   RootStackParamList,
 } from '../../../types/navigation.types';
 
-export const ItemWithNestedList = ({
-  itemWithNestedList,
+export const DropdownItem = ({
+  dropdownItem,
   navigation,
 }: {
-  itemWithNestedList: IPageData;
+  dropdownItem: IPageData;
   navigation: HomePageScreenNavigationProp;
 }) => {
   const [isSectionOpen, setIsSectionOpen] = useState(false);
+
+  const checkIfItemHasNestedList = !!dropdownItem.data;
+
+  const dropdownItemPressHandler = () => {
+    if (checkIfItemHasNestedList) {
+      setIsSectionOpen(!isSectionOpen);
+      return;
+    }
+
+    navigation.navigate(dropdownItem.routeName as keyof RootStackParamList);
+  };
 
   const getNestedItemInfo = (item: ISectionData) => {
     if (item.data.length === 0) {
@@ -55,18 +66,15 @@ export const ItemWithNestedList = ({
       <TouchableOpacity
         activeOpacity={0.7}
         delayPressIn={0}
-        onPress={() => setIsSectionOpen(!isSectionOpen)}>
+        onPress={dropdownItemPressHandler}>
         <View style={styles.listItem}>
-          <CircleImage
-            image={itemWithNestedList.icon}
-            imageColor={COLORS.BLUE}
-          />
-          <Text style={styles.pageName}>{itemWithNestedList.engTitle}</Text>
+          <CircleImage image={dropdownItem.icon} imageColor={COLORS.BLUE} />
+          <Text style={styles.pageName}>{dropdownItem.engTitle}</Text>
         </View>
       </TouchableOpacity>
       {isSectionOpen && (
         <FlatList
-          data={itemWithNestedList.data}
+          data={dropdownItem.data}
           renderItem={renderNestedItem}
           keyExtractor={item => `${item.id}`}
         />

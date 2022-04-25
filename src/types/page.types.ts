@@ -17,5 +17,5 @@ export type IPageData = {
   rusTitle: string;
   routeName?: keyof RootStackParamList | string;
   icon: HTMLImageElement;
-  data: ISectionData[] | [];
+  data?: ISectionData[] | [];
 };
