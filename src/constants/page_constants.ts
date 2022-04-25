@@ -8,63 +8,56 @@ export const fruits = require('../assets/pagesIcons/fruits.png');
 export const health = require('../assets/pagesIcons/healthcare.png');
 export const humanResources = require('../assets/pagesIcons/humanResources.png');
 export const technicalGuide = require('../assets/pagesIcons/technicalGuide.png');
+export const maps = require('../assets/pagesIcons/map.png');
 
 export const PAGES_DATA: IPageData[] = [
   {
-    id: 1,
+    id: 'Discount Club',
     icon: discount,
     engTitle: 'Discount Club | Minsk',
     rusTitle: 'Дисконтный клуб | Минск',
     data: DISCOUNT_SECTIONS_DATA,
   },
   {
-    id: 2,
+    id: 'Travel',
     icon: travel,
     engTitle: 'Travel',
     rusTitle: 'Заграничные поездки',
     data: TRAVEL_SECTIONS_DATA,
   },
   {
-    id: 3,
+    id: 'Fruits Delivery',
     icon: fruits,
     engTitle: 'Fruits Delivery',
     rusTitle: 'Доставка фруктов',
     data: [],
   },
   {
-    id: 4,
+    id: 'Safety and Health',
     icon: health,
     engTitle: 'Safety and Health',
     rusTitle: 'Страхование и здоровье',
     data: [],
   },
   {
-    id: 5,
+    id: 'HR',
     icon: humanResources,
     engTitle: 'Human Resources',
     rusTitle: 'Отдел кадров',
     data: [],
   },
   {
-    id: 6,
+    id: 'TG',
     icon: technicalGuide,
     engTitle: 'Technical Guide',
     rusTitle: 'Тухническая помощь',
     data: [],
   },
   {
-    id: 7,
-    icon: technicalGuide,
+    id: 'Maps',
+    icon: maps,
     engTitle: 'Maps',
     rusTitle: 'Карты',
-    data: [
-      {
-        id: 1,
-        engTitle: 'Map of our offices',
-        rusTitle: 'Карта наших офисов',
-        routeName: 'Map',
-        data: [],
-      },
-    ],
+    routeName: 'Map',
   },
 ];

@@ -10,22 +10,44 @@ import {
 import {COLORS, FONT_FAMILY, SIZES} from '../../../constants/style';
 import {CircleImage} from '../../CircleImage/CircleImage';
 import icons from '../../../constants/icons';
+import {IPageData, ISectionData} from '../../../types/page.types';
+import {
+  HomePageScreenNavigationProp,
+  RootStackParamList,
+} from '../../../types/navigation.types';
 
-export const ItemWithNestedList = ({itemWithNestedList, navigation}) => {
+export const DropdownItem = ({
+  dropdownItem,
+  navigation,
+}: {
+  dropdownItem: IPageData;
+  navigation: HomePageScreenNavigationProp;
+}) => {
   const [isSectionOpen, setIsSectionOpen] = useState(false);
 
-  const getNestedItemInfo = item => {
-    if (item.data.length === 0 && !item.routeName) {
+  const checkIfItemHasNestedList = !dropdownItem.routeName;
+
+  const dropdownItemPressHandler = () => {
+    if (checkIfItemHasNestedList) {
+      setIsSectionOpen(!isSectionOpen);
+      return;
+    }
+
+    navigation.navigate(dropdownItem.routeName as keyof RootStackParamList);
+  };
+
+  const getNestedItemInfo = (item: ISectionData) => {
+    if (item.data.length === 0) {
       navigation.navigate('EmptyPage');
       return;
     }
 
-    navigation.navigate(item.routeName, {
+    navigation.navigate(item.routeName as keyof RootStackParamList, {
       data: item.data,
     });
   };
 
-  const renderNestedItem = ({item}) => {
+  const renderNestedItem = ({item}: {item: ISectionData}) => {
     return (
       <TouchableOpacity
         activeOpacity={0.7}
@@ -44,18 +66,15 @@ export const ItemWithNestedList = ({itemWithNestedList, navigation}) => {
       <TouchableOpacity
         activeOpacity={0.7}
         delayPressIn={0}
-        onPress={() => setIsSectionOpen(!isSectionOpen)}>
+        onPress={dropdownItemPressHandler}>
         <View style={styles.listItem}>
-          <CircleImage
-            image={itemWithNestedList.icon}
-            imageColor={COLORS.BLUE}
-          />
-          <Text style={styles.pageName}>{itemWithNestedList.engTitle}</Text>
+          <CircleImage image={dropdownItem.icon} imageColor={COLORS.BLUE} />
+          <Text style={styles.pageName}>{dropdownItem.engTitle}</Text>
         </View>
       </TouchableOpacity>
       {isSectionOpen && (
         <FlatList
-          data={itemWithNestedList.data}
+          data={dropdownItem.data}
           renderItem={renderNestedItem}
           keyExtractor={item => item.id}
         />

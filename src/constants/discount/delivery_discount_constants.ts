@@ -9,9 +9,9 @@ export const healthy = require('../../assets/discounts/healthy.jpg');
 export const domino = require('../../assets/discounts/domino.jpg');
 
 export const DELIVERY_DISCOUNTS_DATA: IDiscountCities = {
-  minsk: [
+  MINSK: [
     {
-      id: 1,
+      id: 'ArtSushi',
       rusTitle: 'АртСуши',
       engTitle: 'ArtSushi',
       routeName: 'DiscountDesc',
@@ -32,7 +32,7 @@ export const DELIVERY_DISCOUNTS_DATA: IDiscountCities = {
         'Промокод для получения скидки - Lll.',
     },
     {
-      id: 2,
+      id: 'Wok.by',
       rusTitle: 'Вок.бай',
       engTitle: 'Wok.by',
       routeName: 'DiscountDesc',
@@ -53,7 +53,7 @@ export const DELIVERY_DISCOUNTS_DATA: IDiscountCities = {
         'Доставка еды в Минске производится бесплатно.',
     },
     {
-      id: 3,
+      id: 'Plovberry',
       rusTitle: 'Пловберри',
       engTitle: 'Plovberry',
       routeName: 'DiscountDesc',
@@ -70,7 +70,7 @@ export const DELIVERY_DISCOUNTS_DATA: IDiscountCities = {
         'Доставка еды в Минске производится бесплатно.',
     },
     {
-      id: 4,
+      id: 'TOKINY',
       rusTitle: 'Токини',
       engTitle: 'TOKINY',
       routeName: 'DiscountDesc',
@@ -95,7 +95,7 @@ export const DELIVERY_DISCOUNTS_DATA: IDiscountCities = {
         'Для получения скидки предъявите дискотную карту.\n',
     },
     {
-      id: 5,
+      id: "Papa John's",
       rusTitle: 'Папа Джонс',
       engTitle: "Papa John's",
       routeName: 'DiscountDesc',
@@ -113,7 +113,7 @@ export const DELIVERY_DISCOUNTS_DATA: IDiscountCities = {
         'При предъявлении корпоративной карты в зале ресторана вы можете получить скидку 10% на продукцию собственного производства.',
     },
     {
-      id: 6,
+      id: 'Healthy Plan',
       rusTitle: 'Здоровый план',
       engTitle: 'Healthy Plan',
       routeName: 'DiscountDesc',
@@ -133,7 +133,7 @@ export const DELIVERY_DISCOUNTS_DATA: IDiscountCities = {
         '20% - на заказ 8ми и более комплексов.',
     },
     {
-      id: 7,
+      id: "Domino's Pizza",
       rusTitle: 'Доминос пицца',
       engTitle: "Domino's Pizza",
       routeName: 'DiscountDesc',
@@ -152,9 +152,9 @@ export const DELIVERY_DISCOUNTS_DATA: IDiscountCities = {
         'Для оформления заказа используйте логин и пароль аккаунта компании.',
     },
   ],
-  gomel: [],
-  kyiv: [],
-  brest: [],
-  grodno: [],
-  vitebsk: [],
+  GOMEL: [],
+  KYIV: [],
+  BREST: [],
+  GRODNO: [],
+  VITEBSK: [],
 };

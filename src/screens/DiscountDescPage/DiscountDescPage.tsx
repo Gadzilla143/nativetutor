@@ -1,29 +1,20 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 
 import {StyleSheet, View, Image} from 'react-native';
 import {DiscountHeader} from '../Discount/DiscountHeader';
 
 import {COLORS, SIZES} from '../../constants/style';
 import {DiscountDescPageBody} from './DiscountDescPageBody';
+import {TDiscountDescProps} from '../../types/navigation.types';
 
-export const DiscountDescPage = ({route, navigation}) => {
-  const {itemRouteName, data} = route.params;
-  const [discountData, setDiscountData] = useState(null);
-
-  useEffect(() => {
-    //API call here
-    const discountInfo = data.length
-      ? data.filter(item => item.routeName === itemRouteName)[0]
-      : data;
-
-    setDiscountData(discountInfo);
-  }, []);
+export const DiscountDescPage = ({route, navigation}: TDiscountDescProps) => {
+  const {data} = route.params;
 
   return (
     <View style={styles.wrapper}>
-      <DiscountHeader navigation={navigation} />
-      <Image style={styles.logo} source={discountData?.img} />
-      <DiscountDescPageBody discountData={discountData} />
+      <DiscountHeader navigation={navigation} title={data?.engTitle} />
+      <Image style={styles.logo} source={data?.img} />
+      <DiscountDescPageBody discountData={data} />
     </View>
   );
 };

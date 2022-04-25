@@ -1,18 +1,25 @@
 import React from 'react';
 import {Text, View, StyleSheet, Image} from 'react-native';
 import {COLORS, FONT_FAMILY, SIZES} from '../../constants/style';
-import {account, logo} from '../../constants/header_constants';
 import {CircleImage} from '../CircleImage/CircleImage';
 import LinearGradient from 'react-native-linear-gradient';
 import {SearchInput} from '../SearchInput/SearchInput';
+import {HomePageScreenNavigationProp} from '../../types/navigation.types';
+import {account, logo} from '../../constants/header_constants';
 
 const APP_NAME = 'LAsk';
+
+interface IHeaderProps {
+  navigation: HomePageScreenNavigationProp;
+  setIsPressOnSearchArea: (isPressed: boolean) => void;
+  isPressOnSearchArea: boolean;
+}
 
 export const Header = ({
   navigation,
   setIsPressOnSearchArea,
   isPressOnSearchArea,
-}) => {
+}: IHeaderProps) => {
   return (
     <LinearGradient
       colors={[COLORS.DARK_BLUE, COLORS.LIGHT_BLUE]}

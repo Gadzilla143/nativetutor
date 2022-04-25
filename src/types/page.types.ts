@@ -1,18 +1,21 @@
 import {IDiscountData} from './discount.types';
+import {RootStackParamList} from './navigation.types';
 
-type TSectionData = [] | IDiscountData[];
+export type TSectionData = [] | IDiscountData[];
 
 export type ISectionData = {
-  id: number;
+  id: string;
   engTitle: string;
   rusTitle: string;
-  routeName: string;
+  routeName: keyof RootStackParamList | string;
   data: TSectionData;
 };
 
-export type IPageData =
-  | ISectionData
-  | {
-      icon: HTMLImageElement;
-      data: ISectionData[] | [];
-    };
+export type IPageData = {
+  id: string;
+  engTitle: string;
+  rusTitle: string;
+  routeName?: keyof RootStackParamList | string;
+  icon: HTMLImageElement;
+  data?: ISectionData[] | [];
+};

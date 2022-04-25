@@ -2,16 +2,36 @@ import React from 'react';
 import {Image, StyleSheet, TouchableOpacity} from 'react-native';
 import {IOS} from '../../constants/style';
 import icons from '../../constants/icons';
+import {
+  EmptyPageScreenNavigationProp,
+  MapPageScreenNavigationProp,
+  TDiscountDescProps,
+  TDiscountProps,
+} from '../../types/navigation.types';
 
-export const BackArrow = ({navigation}) => {
+export const BackArrow = ({
+  navigation,
+}: {
+  navigation:
+    | TDiscountProps['navigation']
+    | TDiscountDescProps['navigation']
+    | EmptyPageScreenNavigationProp
+    | MapPageScreenNavigationProp;
+}) => {
   return (
-    !IOS && (
-      <TouchableOpacity
-        onPress={() => navigation.goBack()}
-        style={styles.imageWrapper}>
-        <Image source={icons.back} resizeMode="contain" style={styles.image} />
-      </TouchableOpacity>
-    )
+    <>
+      {!IOS && (
+        <TouchableOpacity
+          onPress={() => navigation.goBack()}
+          style={styles.imageWrapper}>
+          <Image
+            source={icons.back}
+            resizeMode="contain"
+            style={styles.image}
+          />
+        </TouchableOpacity>
+      )}
+    </>
   );
 };
 
