@@ -37,7 +37,7 @@ export const DropdownItem = ({
   };
 
   const getNestedItemInfo = (item: ISectionData) => {
-    if (item.data.length === 0 && !item.routeName) {
+    if (item.data.length === 0) {
       navigation.navigate('EmptyPage');
       return;
     }

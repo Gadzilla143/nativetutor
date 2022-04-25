@@ -7,6 +7,7 @@ export type RootStackParamList = {
   Discount: {data: IDiscountData[]};
   DiscountDesc: {data: IDiscountData};
   EmptyPage: undefined;
+  Map: undefined;
 };
 
 type DiscountScreenRouteProp = RouteProp<RootStackParamList, 'Discount'>;
@@ -44,4 +45,9 @@ export type EmptyPageScreenNavigationProp = StackNavigationProp<
 export type HomePageScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
   'Home'
+>;
+
+export type MapPageScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  'Map'
 >;

@@ -8,6 +8,7 @@ export const fruits = require('../assets/pagesIcons/fruits.png');
 export const health = require('../assets/pagesIcons/healthcare.png');
 export const humanResources = require('../assets/pagesIcons/humanResources.png');
 export const technicalGuide = require('../assets/pagesIcons/technicalGuide.png');
+export const maps = require('../assets/pagesIcons/map.png');
 
 export const PAGES_DATA: IPageData[] = [
   {
@@ -53,18 +54,10 @@ export const PAGES_DATA: IPageData[] = [
     data: [],
   },
   {
-    id: 7,
-    icon: technicalGuide,
+    id: 'Maps',
+    icon: maps,
     engTitle: 'Maps',
     rusTitle: 'Карты',
-    data: [
-      {
-        id: 1,
-        engTitle: 'Map of our offices',
-        rusTitle: 'Карта наших офисов',
-        routeName: 'Map',
-        data: [],
-      },
-    ],
+    routeName: 'Map',
   },
 ];

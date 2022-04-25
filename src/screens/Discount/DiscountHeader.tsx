@@ -3,13 +3,20 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {COLORS, SIZES} from '../../constants/style';
 import {BackArrow} from '../../components/BackArrow/BackArrow';
-import {TDiscountDescProps, TDiscountProps} from '../../types/navigation.types';
+import {
+  MapPageScreenNavigationProp,
+  TDiscountDescProps,
+  TDiscountProps,
+} from '../../types/navigation.types';
 
 export const DiscountHeader = ({
   navigation,
   title,
 }: {
-  navigation: TDiscountProps['navigation'] | TDiscountDescProps['navigation'];
+  navigation:
+    | TDiscountProps['navigation']
+    | TDiscountDescProps['navigation']
+    | MapPageScreenNavigationProp;
   title?: string;
 }) => {
   return (
