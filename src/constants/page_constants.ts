@@ -52,4 +52,19 @@ export const PAGES_DATA: IPageData[] = [
     rusTitle: 'Тухническая помощь',
     data: [],
   },
+  {
+    id: 7,
+    icon: technicalGuide,
+    engTitle: 'Maps',
+    rusTitle: 'Карты',
+    data: [
+      {
+        id: 1,
+        engTitle: 'Map of our offices',
+        rusTitle: 'Карта наших офисов',
+        routeName: 'Map',
+        data: [],
+      },
+    ],
+  },
 ];

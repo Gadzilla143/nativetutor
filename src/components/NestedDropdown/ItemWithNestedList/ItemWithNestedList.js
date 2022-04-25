@@ -15,7 +15,7 @@ export const ItemWithNestedList = ({itemWithNestedList, navigation}) => {
   const [isSectionOpen, setIsSectionOpen] = useState(false);
 
   const getNestedItemInfo = item => {
-    if (item.data.length === 0) {
+    if (item.data.length === 0 && !item.routeName) {
       navigation.navigate('EmptyPage');
       return;
     }
