@@ -4,8 +4,13 @@ import {Header} from '../../components/Header/Header';
 import {NestedDropdown} from '../../components/NestedDropdown/NestedDropdown';
 import {useKeyboardVisibility} from '../../hooks/useKeyboardVisibility';
 import {PAGES_DATA} from '../../constants/page_constants';
+import {HomePageScreenNavigationProp} from '../../types/navigation.types';
 
-export const HomePage = ({navigation}) => {
+export const HomePage = ({
+  navigation,
+}: {
+  navigation: HomePageScreenNavigationProp;
+}) => {
   const [isPressOnSearchArea, setIsPressOnSearchArea] = useState(false);
 
   const isKeyboardVisible = useKeyboardVisibility();
@@ -16,6 +21,7 @@ export const HomePage = ({navigation}) => {
       onStartShouldSetResponder={() => {
         setIsPressOnSearchArea(false);
         isKeyboardVisible ? Keyboard.dismiss() : null;
+        return true;
       }}>
       <NestedDropdown navigation={navigation} data={PAGES_DATA} />
       <Header

@@ -7,36 +7,51 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {COLORS, FONT_FAMILY, SIZES} from '../../../constants/style';
-import {DETAILED_INFO_SECTION_TITLE} from '../../../utils/search.utils';
+import {
+  ESectionTitles,
+  IInitialSectionData,
+  TDetailedInfoData,
+  TTopicsData,
+} from '../../../types/search.types';
+import {
+  HomePageScreenNavigationProp,
+  RootStackParamList,
+} from '../../../types/navigation.types';
 
 const EMPTY_SECTION_MESSAGE = 'There is no result for entered search string.';
+
+interface ISearchDropdownListProps {
+  sectionsData: IInitialSectionData[];
+  navigation: HomePageScreenNavigationProp;
+  setIsSearchListOpen: (isOpen: boolean) => void;
+}
 
 export const SearchDropdownList = ({
   sectionsData,
   navigation,
   setIsSearchListOpen,
-}) => {
-  const searchItemPressHandler = item => {
+}: ISearchDropdownListProps) => {
+  const searchItemPressHandler = (item: TTopicsData | TDetailedInfoData) => {
     setIsSearchListOpen(false);
 
-    if (item.anchoredSection === DETAILED_INFO_SECTION_TITLE) {
-      navigation.navigate(item.routeName, {
-        data: item,
+    if (item.anchoredSection === ESectionTitles.DETAILED_INFO_SECTION_TITLE) {
+      navigation.navigate(item.routeName as keyof RootStackParamList, {
+        data: item as TDetailedInfoData,
       });
       return;
     }
 
-    if (item.data.length === 0) {
+    if ((item as TTopicsData).data.length === 0) {
       navigation.navigate('EmptyPage');
       return;
     }
 
-    navigation.navigate(item.routeName, {
-      data: item.data,
+    navigation.navigate(item.routeName as keyof RootStackParamList, {
+      data: (item as TTopicsData).data,
     });
   };
 
-  const renderSearchItem = item => (
+  const renderSearchItem = (item: TTopicsData | TDetailedInfoData) => (
     <TouchableOpacity
       activeOpacity={0.7}
       onPress={() => searchItemPressHandler(item)}
@@ -53,7 +68,7 @@ export const SearchDropdownList = ({
     );
   };
 
-  const renderSectionHeader = sectionHeader => (
+  const renderSectionHeader = (sectionHeader: string) => (
     <Text style={styles.header}>{sectionHeader}</Text>
   );
 
@@ -64,7 +79,7 @@ export const SearchDropdownList = ({
       renderItem={({item}) => renderSearchItem(item)}
       renderSectionHeader={({section}) => {
         if (section.data.length === 0) {
-          return;
+          return <></>;
         }
         return renderSectionHeader(section.sectionTitle);
       }}

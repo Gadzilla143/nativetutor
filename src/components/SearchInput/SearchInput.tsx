@@ -7,18 +7,28 @@ import {
   getFullSectionsData,
 } from '../../utils/search.utils';
 import {SearchDropdownList} from './SearchDropdownList/SearchDropdownList';
+import {IInitialSectionData} from '../../types/search.types';
+import {HomePageScreenNavigationProp} from '../../types/navigation.types';
 
 const SEARCH_INPUT_PLACEHOLDER = 'Search for company info';
+
+interface ISearchInputProps {
+  navigation: HomePageScreenNavigationProp;
+  isPressOnSearchArea: boolean;
+  setIsPressOnSearchArea: (isPressed: boolean) => void;
+}
 
 export const SearchInput = ({
   navigation,
   isPressOnSearchArea,
   setIsPressOnSearchArea,
-}) => {
+}: ISearchInputProps) => {
   const [searchValue, setSearchValue] = useState('');
-  const [sectionsData, setSectionsData] = useState(getFullSectionsData());
+  const [sectionsData, setSectionsData] = useState<IInitialSectionData[]>(
+    getFullSectionsData(),
+  );
 
-  const setSearchPhrase = value => {
+  const setSearchPhrase = (value: string) => {
     setSearchValue(value);
   };
 
@@ -34,7 +44,10 @@ export const SearchInput = ({
   return (
     <View
       style={styles.searchBarContainer}
-      onStartShouldSetResponder={() => setIsPressOnSearchArea(true)}>
+      onStartShouldSetResponder={() => {
+        setIsPressOnSearchArea(true);
+        return true;
+      }}>
       <View style={styles.searchInputContainer}>
         <Image source={search} style={styles.searchIcon} />
         <TextInput

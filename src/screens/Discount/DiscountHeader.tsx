@@ -3,15 +3,20 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {COLORS, SIZES} from '../../constants/style';
 import {BackArrow} from '../../components/BackArrow/BackArrow';
+import {TDiscountDescProps, TDiscountProps} from '../../types/navigation.types';
 
-export const DiscountHeader = ({navigation, title}) => {
+export const DiscountHeader = ({
+  navigation,
+  title,
+}: {
+  navigation: TDiscountProps['navigation'] | TDiscountDescProps['navigation'];
+  title?: string;
+}) => {
   return (
     <View style={styles.wrapper}>
       <View style={styles.container}>
         <BackArrow navigation={navigation} />
-        <View>
-          <Text style={styles.title}>{title}</Text>
-        </View>
+        <View>{title && <Text style={styles.title}>{title}</Text>}</View>
       </View>
     </View>
   );

@@ -7,8 +7,10 @@ interface IDiscountLinks {
 }
 
 export interface IDiscountData {
-  id: number;
-  title: string;
+  id: string;
+  rusTitle: string;
+  engTitle: string;
+  routeName: string;
   socialLinks: IDiscountLinks;
   img: HTMLImageElement;
   shortDesc: string;
@@ -27,8 +29,6 @@ enum ECities {
   VITEBSK = 'vitebsk',
 }
 
-type TCities = keyof ECities[keyof ECities];
-
 export type IDiscountCities = {
-  [key in TCities]: IDiscountData[] | [];
+  [key in keyof typeof ECities]: IDiscountData[] | [];
 };

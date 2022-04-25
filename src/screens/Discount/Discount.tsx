@@ -3,8 +3,9 @@ import {StyleSheet, View} from 'react-native';
 import {DiscountHeader} from './DiscountHeader';
 import {SIZES} from '../../constants/style';
 import {DiscountList} from './DiscountList';
+import {TDiscountProps} from '../../types/navigation.types';
 
-export const DiscountPage = ({route, navigation}) => {
+export const DiscountPage = ({route, navigation}: TDiscountProps) => {
   const {data} = route.params;
 
   return (

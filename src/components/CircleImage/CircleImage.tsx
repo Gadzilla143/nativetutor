@@ -3,7 +3,13 @@ import {StyleSheet, View, Image} from 'react-native';
 
 const PAGE_ICON_SIZE = 45;
 
-export const CircleImage = ({image, imageColor}) => {
+export const CircleImage = ({
+  image,
+  imageColor,
+}: {
+  image: HTMLImageElement;
+  imageColor: string;
+}) => {
   return (
     <View style={{...styles.pageIconCircle, backgroundColor: imageColor}}>
       <Image source={image} style={styles.pageIcon} />

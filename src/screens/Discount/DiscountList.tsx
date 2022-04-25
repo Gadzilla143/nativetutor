@@ -2,11 +2,19 @@ import {DiscountCard} from './renderDiscountCard';
 import {FlatList, StyleSheet} from 'react-native';
 import React from 'react';
 import {SIZES} from '../../constants/style';
+import {IDiscountData} from '../../types/discount.types';
+import {TDiscountProps} from '../../types/navigation.types';
 
-export const DiscountList = ({navigation, data}) => {
+export const DiscountList = ({
+  navigation,
+  data,
+}: {
+  navigation: TDiscountProps['navigation'];
+  data: IDiscountData[];
+}) => {
   const numColumns = data.length === 2 ? 1 : 2;
 
-  const renderDiscountCard = ({item}) => {
+  const renderDiscountCard = ({item}: {item: IDiscountData}) => {
     return (
       <DiscountCard
         {...item}
@@ -22,7 +30,7 @@ export const DiscountList = ({navigation, data}) => {
   return (
     <FlatList
       data={data}
-      keyExtractor={item => `${item.id}`}
+      keyExtractor={item => item.id}
       renderItem={renderDiscountCard}
       numColumns={numColumns}
       contentContainerStyle={styles.container}

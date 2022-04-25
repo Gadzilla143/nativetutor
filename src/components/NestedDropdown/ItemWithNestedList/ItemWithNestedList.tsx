@@ -10,22 +10,33 @@ import {
 import {COLORS, FONT_FAMILY, SIZES} from '../../../constants/style';
 import {CircleImage} from '../../CircleImage/CircleImage';
 import icons from '../../../constants/icons';
+import {IPageData, ISectionData} from '../../../types/page.types';
+import {
+  HomePageScreenNavigationProp,
+  RootStackParamList,
+} from '../../../types/navigation.types';
 
-export const ItemWithNestedList = ({itemWithNestedList, navigation}) => {
+export const ItemWithNestedList = ({
+  itemWithNestedList,
+  navigation,
+}: {
+  itemWithNestedList: IPageData;
+  navigation: HomePageScreenNavigationProp;
+}) => {
   const [isSectionOpen, setIsSectionOpen] = useState(false);
 
-  const getNestedItemInfo = item => {
+  const getNestedItemInfo = (item: ISectionData) => {
     if (item.data.length === 0) {
       navigation.navigate('EmptyPage');
       return;
     }
 
-    navigation.navigate(item.routeName, {
+    navigation.navigate(item.routeName as keyof RootStackParamList, {
       data: item.data,
     });
   };
 
-  const renderNestedItem = ({item}) => {
+  const renderNestedItem = ({item}: {item: ISectionData}) => {
     return (
       <TouchableOpacity
         activeOpacity={0.7}
@@ -57,7 +68,7 @@ export const ItemWithNestedList = ({itemWithNestedList, navigation}) => {
         <FlatList
           data={itemWithNestedList.data}
           renderItem={renderNestedItem}
-          keyExtractor={item => item.id}
+          keyExtractor={item => `${item.id}`}
         />
       )}
     </>

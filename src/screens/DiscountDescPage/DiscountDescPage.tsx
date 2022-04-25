@@ -5,23 +5,27 @@ import {DiscountHeader} from '../Discount/DiscountHeader';
 
 import {COLORS, SIZES} from '../../constants/style';
 import {DiscountDescPageBody} from './DiscountDescPageBody';
+import {IDiscountData} from '../../types/discount.types';
+import {TDiscountDescProps} from '../../types/navigation.types';
 
-export const DiscountDescPage = ({route, navigation}) => {
+export const DiscountDescPage = ({route, navigation}: TDiscountDescProps) => {
   const {itemRouteName, data} = route.params;
-  const [discountData, setDiscountData] = useState(null);
+  const [discountData, setDiscountData] = useState<IDiscountData | null>(null);
 
   useEffect(() => {
     //API call here
-    const discountInfo = data.length
-      ? data.filter(item => item.routeName === itemRouteName)[0]
-      : data;
+    const discountInfo = (data as IDiscountData[]).length
+      ? (data as IDiscountData[]).filter(
+          item => item.routeName === itemRouteName,
+        )[0]
+      : (data as IDiscountData);
 
     setDiscountData(discountInfo);
   }, []);
 
   return (
     <View style={styles.wrapper}>
-      <DiscountHeader navigation={navigation} />
+      <DiscountHeader navigation={navigation} title={discountData?.engTitle} />
       <Image style={styles.logo} source={discountData?.img} />
       <DiscountDescPageBody discountData={discountData} />
     </View>

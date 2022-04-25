@@ -1,5 +1,4 @@
 import React, {createContext, useEffect, useState} from 'react';
-
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 import {
@@ -9,17 +8,21 @@ import {
   HomePage,
 } from './src/screens';
 import {getData} from './src/utils/AsyncStorage';
+import {RootStackParamList} from './src/types/navigation.types';
+import {IFavoriteContext} from './src/types/context.types';
 
-const Stack = createStackNavigator();
-export const FavoriteContext = createContext(null);
+const Stack = createStackNavigator<RootStackParamList>();
+export const FavoriteContext = createContext<IFavoriteContext | null>(null);
 
 const App = () => {
-  const [favorite, setFavorite] = useState(null);
+  const [favorite, setFavorite] = useState({});
+
   useEffect(() => {
     getData('favorite')
       .then(data => setFavorite(data || {}))
       .catch(e => console.log(e));
   }, []);
+
   return (
     <FavoriteContext.Provider value={{favorite, setFavorite}}>
       <NavigationContainer>

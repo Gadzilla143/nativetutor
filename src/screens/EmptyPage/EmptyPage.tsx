@@ -2,11 +2,16 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {BackArrow} from '../../components/BackArrow/BackArrow';
 import {FONT_FAMILY, SIZES} from '../../constants/style';
+import {EmptyPageScreenNavigationProp} from '../../types/navigation.types';
 
 const EMPTY_PAGE_CONTENT =
   'Sorry, but this page does not have any information at this time.';
 
-export const EmptyPage = ({navigation}) => {
+export const EmptyPage = ({
+  navigation,
+}: {
+  navigation: EmptyPageScreenNavigationProp;
+}) => {
   return (
     <View style={styles.emptyPageContent}>
       <BackArrow navigation={navigation} />
