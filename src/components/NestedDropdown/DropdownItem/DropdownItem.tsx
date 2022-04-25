@@ -37,7 +37,7 @@ export const DropdownItem = ({
   };
 
   const getNestedItemInfo = (item: ISectionData) => {
-    if (item.data.length === 0) {
+    if (item.data.length === 0 && !item.routeName) {
       navigation.navigate('EmptyPage');
       return;
     }
@@ -76,7 +76,7 @@ export const DropdownItem = ({
         <FlatList
           data={dropdownItem.data}
           renderItem={renderNestedItem}
-          keyExtractor={item => `${item.id}`}
+          keyExtractor={item => item.id}
         />
       )}
     </>

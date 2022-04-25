@@ -6,6 +6,7 @@ import {
   DiscountDescPage,
   EmptyPage,
   HomePage,
+  MapPage
 } from './src/screens';
 import {getData} from './src/utils/AsyncStorage';
 import {RootStackParamList} from './src/types/navigation.types';
@@ -28,13 +29,14 @@ const App = () => {
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
-            headerShown: false,
+              headerShown: false,
           }}
           initialRouteName={'Home'}>
           <Stack.Screen name="Home" component={HomePage} />
           <Stack.Screen name="Discount" component={DiscountPage} />
           <Stack.Screen name="DiscountDesc" component={DiscountDescPage} />
           <Stack.Screen name="EmptyPage" component={EmptyPage} />
+          <Stack.Screen name="Map" component={MapPage}/>
         </Stack.Navigator>
       </NavigationContainer>
     </FavoriteContext.Provider>
