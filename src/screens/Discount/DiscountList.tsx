@@ -20,8 +20,7 @@ export const DiscountList = ({
         {...item}
         onPress={() =>
           navigation.navigate('DiscountDesc', {
-            itemRouteName: item.routeName,
-            data: data,
+            data: item,
           })
         }
       />

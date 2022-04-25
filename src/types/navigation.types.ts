@@ -5,7 +5,7 @@ import {StackNavigationProp} from '@react-navigation/stack';
 export type RootStackParamList = {
   Home: undefined;
   Discount: {data: IDiscountData[]};
-  DiscountDesc: {itemRouteName?: string; data: IDiscountData[] | IDiscountData};
+  DiscountDesc: {data: IDiscountData};
   EmptyPage: undefined;
 };
 
