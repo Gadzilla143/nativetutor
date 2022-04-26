@@ -2,14 +2,14 @@ import React from 'react';
 
 import {StyleSheet, Text, View} from 'react-native';
 import {COLORS, SIZES} from '../../constants/style';
-import {BackArrow} from '../../components/BackArrow/BackArrow';
+import {BackArrow} from '../BackArrow/BackArrow';
 import {
   MapPageScreenNavigationProp,
   TDiscountDescProps,
   TDiscountProps,
 } from '../../types/navigation.types';
 
-export const DiscountHeader = ({
+export const PageHeader = ({
   navigation,
   title,
 }: {
