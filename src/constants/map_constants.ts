@@ -1,22 +1,4 @@
-import {Region} from 'react-native-maps';
-
-interface IMarker {
-  title: string;
-  description: string;
-  region: IRegion;
-}
-
-export interface IRegion {
-  latitude: number;
-  longitude: number;
-  latitudeDelta?: number;
-  longitudeDelta?: number;
-}
-
-interface ILocation {
-  title: string;
-  region: Region;
-}
+import {ILocation, IMarker} from '../types/map.types';
 
 export const MAP_MARKERS: IMarker[] = [
   {

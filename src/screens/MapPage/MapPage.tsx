@@ -1,10 +1,12 @@
-import React, {createRef} from 'react';
-import {Button, StyleSheet, View} from 'react-native';
+import React, {createRef, useState} from 'react';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import MapView, {Marker, Region} from 'react-native-maps';
-import {COLORS, SIZES} from '../../constants/style';
+import {COLORS, FONT_FAMILY, SIZES} from '../../constants/style';
 import {DiscountHeader} from '../Discount/DiscountHeader';
 import {MAP_LOCATIONS, MAP_MARKERS} from '../../constants/map_constants';
 import {MapPageScreenNavigationProp} from '../../types/navigation.types';
+import {IMarker} from '../../types/map.types';
+import {MarkerDescription} from '../../components/MarkerDescription/MarkerDescription';
 
 export const MapPage = ({
   navigation,
@@ -12,11 +14,23 @@ export const MapPage = ({
   navigation: MapPageScreenNavigationProp;
 }) => {
   let mapRef = createRef<MapView>();
+  const [descriptionData, setDescriptionData] = useState<IMarker | null>(null);
+
   const animate = (region: Region) => {
     if (mapRef && mapRef.current) {
       mapRef.current.animateToRegion(region, 2000);
     }
   };
+
+  const setDataForMarkerDescription = (marker: IMarker) => {
+    if (descriptionData && descriptionData.title === marker.title) {
+      setDescriptionData(null);
+      return;
+    }
+
+    setDescriptionData(marker);
+  };
+
   return (
     <View>
       <DiscountHeader title={'Map'} navigation={navigation} />
@@ -33,20 +47,26 @@ export const MapPage = ({
           <Marker
             key={index + marker.title}
             coordinate={marker.region}
-            title={marker.title}
-            description={marker.description}
+            onPress={() => setDataForMarkerDescription(marker)}
           />
         ))}
       </MapView>
       <View style={styles.buttonsContainer}>
         {MAP_LOCATIONS.map(location => (
-          <Button
-            id={location.title}
-            title={location.title}
-            onPress={() => animate(location.region)}
-          />
+          <TouchableOpacity
+            activeOpacity={0.7}
+            style={styles.locationButton}
+            onPress={() => animate(location.region)}>
+            <Text style={styles.buttonText}>{location.title}</Text>
+          </TouchableOpacity>
         ))}
       </View>
+      {descriptionData && (
+        <MarkerDescription
+          descriptionData={descriptionData}
+          setDescriptionData={setDescriptionData}
+        />
+      )}
     </View>
   );
 };
@@ -61,8 +81,20 @@ const styles = StyleSheet.create({
   },
   buttonsContainer: {
     position: 'absolute', //use absolute position to show button on top of the map
-    top: '50%', //for center align
-    alignSelf: 'flex-end', //for align to right
+    top: '11%',
+    alignSelf: 'flex-start',
+    flexDirection: 'row',
+    marginLeft: 10,
+  },
+  locationButton: {
+    marginRight: 10,
     backgroundColor: COLORS.BLUE,
+    borderRadius: 5,
+    padding: 12,
+  },
+  buttonText: {
+    ...FONT_FAMILY,
+    color: COLORS.WHITE,
+    fontWeight: '500',
   },
 });
