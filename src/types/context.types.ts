@@ -1,4 +1,6 @@
+import {IDiscountData} from './discount.types';
+
 export interface IFavoriteContext {
-  favorite: {[key: string]: boolean};
-  setFavorite: (favorite: {[key: string]: boolean}) => void;
+  favorite: IDiscountData[];
+  setFavorite: (favorite: IDiscountData[]) => void;
 }

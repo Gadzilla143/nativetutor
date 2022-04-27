@@ -14,7 +14,7 @@ export const DiscountDescPageBody = ({
       {discountData && (
         <View style={styles.container}>
           <View style={styles.paddings}>
-            <Like id={discountData?.id} />
+            <Like data={discountData} />
             <Text style={styles.title}>{discountData?.engTitle}</Text>
             <Text style={styles.shortDesc}>{discountData?.shortDesc}</Text>
             <Text style={styles.promocode}>{discountData?.promocode}</Text>

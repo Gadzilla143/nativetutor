@@ -4,6 +4,7 @@ import {IOS} from '../../constants/style';
 import icons from '../../constants/icons';
 import {
   EmptyPageScreenNavigationProp,
+  FavoritePageScreenNavigationProp,
   MapPageScreenNavigationProp,
   TDiscountDescProps,
   TDiscountProps,
@@ -16,7 +17,8 @@ export const BackArrow = ({
     | TDiscountProps['navigation']
     | TDiscountDescProps['navigation']
     | EmptyPageScreenNavigationProp
-    | MapPageScreenNavigationProp;
+    | MapPageScreenNavigationProp
+    | FavoritePageScreenNavigationProp;
 }) => {
   return (
     <>

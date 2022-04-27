@@ -2,21 +2,20 @@ import {FlatList, ListRenderItemInfo, StyleSheet} from 'react-native';
 import React from 'react';
 import {SIZES} from '../../constants/style';
 import {IDiscountData} from '../../types/discount.types';
+import {IFavoriteContext} from '../../types/context.types';
 
 interface IPageDataListProps {
-  data: IDiscountData[];
+  data: IDiscountData[] | IFavoriteContext['favorite'];
   renderItem: (item: ListRenderItemInfo<IDiscountData>) => React.ReactElement;
 }
 
 export const PageDataList = ({data, renderItem}: IPageDataListProps) => {
-  const numColumns = data.length === 2 ? 1 : 2;
-
   return (
     <FlatList
       data={data}
       keyExtractor={item => item.id}
       renderItem={renderItem}
-      numColumns={numColumns}
+      numColumns={2}
       contentContainerStyle={styles.container}
     />
   );

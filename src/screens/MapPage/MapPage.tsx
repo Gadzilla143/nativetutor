@@ -2,7 +2,7 @@ import React, {createRef, useState} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import MapView, {Marker, Region} from 'react-native-maps';
 import {COLORS, FONT_FAMILY, SIZES} from '../../constants/style';
-import {DiscountHeader} from '../Discount/DiscountHeader';
+import {PageHeader} from '../../components/PageHeader/PageHeader';
 import {MAP_LOCATIONS, MAP_MARKERS} from '../../constants/map_constants';
 import {MapPageScreenNavigationProp} from '../../types/navigation.types';
 import {IMarker} from '../../types/map.types';
@@ -33,7 +33,7 @@ export const MapPage = ({
 
   return (
     <View>
-      <DiscountHeader title={'Map'} navigation={navigation} />
+      <PageHeader title={'Map'} navigation={navigation} />
       <MapView
         ref={mapRef}
         style={styles.map}

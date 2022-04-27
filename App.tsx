@@ -11,16 +11,18 @@ import {
 import {getData} from './src/utils/AsyncStorage';
 import {RootStackParamList} from './src/types/navigation.types';
 import {IFavoriteContext} from './src/types/context.types';
+import {FavoritePage} from './src/screens/FavoritePage/FavoritePage';
+import {IDiscountData} from './src/types/discount.types';
 
 const Stack = createStackNavigator<RootStackParamList>();
 export const FavoriteContext = createContext<IFavoriteContext | null>(null);
 
 const App = () => {
-  const [favorite, setFavorite] = useState({});
+  const [favorite, setFavorite] = useState<IDiscountData[]>([]);
 
   useEffect(() => {
     getData('favorite')
-      .then(data => setFavorite(data || {}))
+      .then(data => setFavorite(data || []))
       .catch(e => console.log(e));
   }, []);
 
@@ -37,6 +39,7 @@ const App = () => {
           <Stack.Screen name="DiscountDesc" component={DiscountDescPage} />
           <Stack.Screen name="EmptyPage" component={EmptyPage} />
           <Stack.Screen name="Map" component={MapPage} />
+          <Stack.Screen name="Favorite" component={FavoritePage} />
         </Stack.Navigator>
       </NavigationContainer>
     </FavoriteContext.Provider>

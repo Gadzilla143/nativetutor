@@ -3,21 +3,33 @@ import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import {COLORS, SIZES} from '../../constants/style';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import icons from '../../constants/icons';
 
 interface IDiscountCardProps {
+  id: string;
   engTitle: string;
   img: HTMLImageElement;
   discount: string;
   shortDesc: string;
   onPress: () => void;
+  closeIconHandler?: (itemId: string) => void;
 }
 
 export const DiscountCard = (props: IDiscountCardProps) => {
-  const {engTitle, img, discount, shortDesc, onPress} = props;
+  const {id, engTitle, img, discount, shortDesc, onPress, closeIconHandler} =
+    props;
+
   return (
     <View style={styles.wrapper}>
       <View style={styles.container}>
         <Image style={styles.logo} source={img} />
+        {closeIconHandler && (
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={() => closeIconHandler(id)}>
+            <Image style={styles.closeIcon} source={icons.closeIcon} />
+          </TouchableOpacity>
+        )}
         <Text style={styles.title} numberOfLines={1} ellipsizeMode="tail">
           {engTitle}
         </Text>
@@ -63,6 +75,11 @@ const styles = StyleSheet.create({
     borderStyle: 'solid',
     borderColor: COLORS.DARK_GREY,
   },
+  closeIcon: {
+    width: 20,
+    height: 20,
+    alignSelf: 'flex-end',
+  },
   title: {
     alignSelf: 'center',
     textAlign: 'center',
@@ -70,7 +87,7 @@ const styles = StyleSheet.create({
     color: COLORS.BLACK,
     fontSize: 20,
     fontWeight: 'bold',
-    marginTop: 50,
+    marginTop: 40,
   },
   desc: {
     alignSelf: 'center',
