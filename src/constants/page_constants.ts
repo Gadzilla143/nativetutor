@@ -12,6 +12,13 @@ export const maps = require('../assets/pagesIcons/map.png');
 
 export const PAGES_DATA: IPageData[] = [
   {
+    id: 'Favorite',
+    icon: discount,
+    engTitle: 'Favorite',
+    rusTitle: 'Избранное',
+    routeName: 'Favorite',
+  },
+  {
     id: 'Discount Club',
     icon: discount,
     engTitle: 'Discount Club | Minsk',

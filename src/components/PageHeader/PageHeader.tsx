@@ -2,21 +2,23 @@ import React from 'react';
 
 import {StyleSheet, Text, View} from 'react-native';
 import {COLORS, SIZES} from '../../constants/style';
-import {BackArrow} from '../../components/BackArrow/BackArrow';
+import {BackArrow} from '../BackArrow/BackArrow';
 import {
+  FavoritePageScreenNavigationProp,
   MapPageScreenNavigationProp,
   TDiscountDescProps,
   TDiscountProps,
 } from '../../types/navigation.types';
 
-export const DiscountHeader = ({
+export const PageHeader = ({
   navigation,
   title,
 }: {
   navigation:
     | TDiscountProps['navigation']
     | TDiscountDescProps['navigation']
-    | MapPageScreenNavigationProp;
+    | MapPageScreenNavigationProp
+    | FavoritePageScreenNavigationProp;
   title?: string;
 }) => {
   return (

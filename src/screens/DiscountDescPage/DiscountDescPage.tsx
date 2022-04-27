@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {StyleSheet, View, Image} from 'react-native';
-import {DiscountHeader} from '../Discount/DiscountHeader';
+import {PageHeader} from '../../components/PageHeader/PageHeader';
 
 import {COLORS, SIZES} from '../../constants/style';
 import {DiscountDescPageBody} from './DiscountDescPageBody';
@@ -12,7 +12,7 @@ export const DiscountDescPage = ({route, navigation}: TDiscountDescProps) => {
 
   return (
     <View style={styles.wrapper}>
-      <DiscountHeader navigation={navigation} title={data?.engTitle} />
+      <PageHeader navigation={navigation} title={data?.engTitle} />
       <Image style={styles.logo} source={data?.img} />
       <DiscountDescPageBody discountData={data} />
     </View>
