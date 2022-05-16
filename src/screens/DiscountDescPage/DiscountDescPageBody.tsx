@@ -7,7 +7,7 @@ import {IDiscountData} from '../../types/discount.types';
 export const DiscountDescPageBody = ({
   discountData,
 }: {
-  discountData: IDiscountData | null;
+  discountData: IDiscountData;
 }) => {
   return (
     <>

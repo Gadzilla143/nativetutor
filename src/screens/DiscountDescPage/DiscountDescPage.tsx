@@ -12,8 +12,8 @@ export const DiscountDescPage = ({route, navigation}: TDiscountDescProps) => {
 
   return (
     <View style={styles.wrapper}>
-      <PageHeader navigation={navigation} title={data?.engTitle} />
-      <Image style={styles.logo} source={data?.img} />
+      <PageHeader navigation={navigation} title={data.engTitle} />
+      <Image style={styles.logo} source={data.img} />
       <DiscountDescPageBody discountData={data} />
     </View>
   );

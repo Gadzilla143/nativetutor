@@ -6,32 +6,29 @@ import icons from '../../constants/icons';
 import {IFavoriteContext} from '../../types/context.types';
 import {IDiscountData} from '../../types/discount.types';
 
-export const Like = ({data}: {data: IDiscountData | null}) => {
+export const Like = ({data}: {data: IDiscountData}) => {
   const {favorite, setFavorite} = useContext(
     FavoriteContext,
   ) as IFavoriteContext;
 
-  const onLike = () => {
-    if (!data) {
-      return;
-    }
+  const checkIsFavorite = (itemId: string) =>
+    !!favorite.find(favoriteItem => favoriteItem.id === itemId);
 
-    const newFavoriteData = [...favorite, data];
+  const onLike = () => {
+    const newFavoriteData = checkIsFavorite(data.id)
+      ? favorite.filter(favoriteItem => favoriteItem.id !== data.id)
+      : [...favorite, data];
+
     setData('favorite', newFavoriteData);
     setFavorite(newFavoriteData);
   };
-
-  const checkIsFavorite = (itemId: string) =>
-    !!favorite.find(favoriteItem => favoriteItem.id === itemId);
 
   return (
     <TouchableOpacity onPress={onLike}>
       <Image
         style={styles.icon}
         source={
-          checkIsFavorite(data ? data.id : '')
-            ? icons.favoriteSvg
-            : icons.unfavoriteSvg
+          checkIsFavorite(data.id) ? icons.favoriteSvg : icons.unfavoriteSvg
         }
       />
     </TouchableOpacity>
