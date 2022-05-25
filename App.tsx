@@ -13,6 +13,7 @@ import {RootStackParamList} from './src/types/navigation.types';
 import {IFavoriteContext} from './src/types/context.types';
 import {FavoritePage} from './src/screens/FavoritePage/FavoritePage';
 import {IDiscountData} from './src/types/discount.types';
+import {InfoPage} from './src/screens/InfoPage/InfoPage';
 
 const Stack = createStackNavigator<RootStackParamList>();
 export const FavoriteContext = createContext<IFavoriteContext | null>(null);
@@ -40,6 +41,7 @@ const App = () => {
           <Stack.Screen name="EmptyPage" component={EmptyPage} />
           <Stack.Screen name="Map" component={MapPage} />
           <Stack.Screen name="Favorite" component={FavoritePage} />
+          <Stack.Screen name="Info" component={InfoPage} />
         </Stack.Navigator>
       </NavigationContainer>
     </FavoriteContext.Provider>

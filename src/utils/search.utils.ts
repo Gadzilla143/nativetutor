@@ -37,7 +37,9 @@ export const getFullSectionsData = (): IInitialSectionData[] => {
   const pagesData = sectionsData.reduce(
     (prevPagesData, currentPageData) =>
       currentPageData
-        ? [...prevPagesData, ...currentPageData.data]
+        ? currentPageData.data.info
+          ? [...prevPagesData, currentPageData.data]
+          : [...prevPagesData, ...currentPageData.data]
         : prevPagesData,
     [] as IDiscountData[],
   );

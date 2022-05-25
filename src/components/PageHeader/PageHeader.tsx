@@ -4,7 +4,9 @@ import {StyleSheet, Text, View} from 'react-native';
 import {COLORS, SIZES} from '../../constants/style';
 import {BackArrow} from '../BackArrow/BackArrow';
 import {
+  EmptyPageScreenNavigationProp,
   FavoritePageScreenNavigationProp,
+  InfoPageScreenNavigationProp,
   MapPageScreenNavigationProp,
   TDiscountDescProps,
   TDiscountProps,
@@ -18,7 +20,9 @@ export const PageHeader = ({
     | TDiscountProps['navigation']
     | TDiscountDescProps['navigation']
     | MapPageScreenNavigationProp
-    | FavoritePageScreenNavigationProp;
+    | FavoritePageScreenNavigationProp
+    | EmptyPageScreenNavigationProp
+    | InfoPageScreenNavigationProp;
   title?: string;
 }) => {
   return (

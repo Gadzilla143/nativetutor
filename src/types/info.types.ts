@@ -1,3 +1,3 @@
-export type IInfoData = {
+export interface IInfoData {
   info: string;
-};
+}
