@@ -15,7 +15,7 @@ export const InfoPage = ({
 
   return (
     <DataPageWrapper navigation={navigation} pageTitle={'Info'}>
-      <Text style={styles.infoPageText}>{data.info}</Text>
+      <Text style={styles.infoPageText}>{data[0].info}</Text>
     </DataPageWrapper>
   );
 };

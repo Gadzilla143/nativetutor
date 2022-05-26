@@ -12,14 +12,14 @@ export const SAFETY_N_HEALTH_SECTIONS_DATA: ISectionData[] = [
       'Rules of conduct for an employee on the territory of the organization',
     rusTitle: 'Правила поведения работника на территории организации',
     routeName: 'Info',
-    data: CONDUCT_RULES_INFO,
+    data: [CONDUCT_RULES_INFO],
   },
   {
     id: 'ProductionFactors',
     engTitle: 'The main dangerous or harmful production factors',
     rusTitle: 'Основные опасные или вредные производственные факторы',
     routeName: 'Info',
-    data: PRODUCTION_FACTORS_INFO,
+    data: [PRODUCTION_FACTORS_INFO],
   },
   {
     id: 'PreventingAccidents',
@@ -28,6 +28,6 @@ export const SAFETY_N_HEALTH_SECTIONS_DATA: ISectionData[] = [
     rusTitle:
       'Методы и средства предупреждения несчастных случаев и профессиональных заболеваний',
     routeName: 'Info',
-    data: PREVENTING_ACCIDENTS_INFO,
+    data: [PREVENTING_ACCIDENTS_INFO],
   },
 ];

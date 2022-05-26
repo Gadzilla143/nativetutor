@@ -2,7 +2,7 @@ import {IDiscountData} from './discount.types';
 import {RootStackParamList} from './navigation.types';
 import {IInfoData} from './info.types';
 
-export type TSectionData = [] | IDiscountData[] | IInfoData;
+export type TSectionData = [] | IDiscountData[] | IInfoData[];
 
 export type ISectionData = {
   id: string;

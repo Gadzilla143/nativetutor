@@ -10,7 +10,7 @@ export type RootStackParamList = {
   EmptyPage: undefined;
   Map: undefined;
   Favorite: undefined;
-  Info: {data: IInfoData};
+  Info: {data: IInfoData[]};
 };
 
 type DiscountScreenRouteProp = RouteProp<RootStackParamList, 'Discount'>;
