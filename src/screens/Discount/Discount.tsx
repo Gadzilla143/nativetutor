@@ -1,11 +1,9 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
-import {PageHeader} from '../../components/PageHeader/PageHeader';
-import {SIZES} from '../../constants/style';
 import {PageDataList} from '../../components/PageDataList/PageDataList';
 import {TDiscountProps} from '../../types/navigation.types';
 import {IDiscountData} from '../../types/discount.types';
 import {DiscountCard} from '../../components/DiscountCard/DiscountCard';
+import {DataPageWrapper} from '../../components/DataPageWrapper/DataPageWrapper';
 
 export const DiscountPage = ({route, navigation}: TDiscountProps) => {
   const {data} = route.params;
@@ -24,22 +22,8 @@ export const DiscountPage = ({route, navigation}: TDiscountProps) => {
   };
 
   return (
-    <View style={styles.wrapper}>
-      <View style={styles.container}>
-        <PageHeader title={'Discount'} navigation={navigation} />
-        <PageDataList data={data} renderItem={renderDiscountCard} />
-      </View>
-    </View>
+    <DataPageWrapper navigation={navigation} pageTitle={'Discount'}>
+      <PageDataList data={data} renderItem={renderDiscountCard} />
+    </DataPageWrapper>
   );
 };
-
-const styles = StyleSheet.create({
-  wrapper: {
-    backgroundColor: 'white',
-  },
-  container: {
-    backgroundColor: 'white',
-    height: SIZES.HEIGHT,
-    alignSelf: 'center',
-  },
-});

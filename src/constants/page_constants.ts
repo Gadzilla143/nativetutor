@@ -1,6 +1,7 @@
 import {DISCOUNT_SECTIONS_DATA} from './sections/discount_club_sections_constants';
 import {TRAVEL_SECTIONS_DATA} from './sections/travel_sections_constants';
 import {IPageData} from '../types/page.types';
+import {SAFETY_N_HEALTH_SECTIONS_DATA} from './sections/safety_n_health_sections_constants';
 
 export const travel = require('../assets/pagesIcons/travel.png');
 export const discount = require('../assets/pagesIcons/discount.png');
@@ -44,7 +45,7 @@ export const PAGES_DATA: IPageData[] = [
     icon: health,
     engTitle: 'Safety and Health',
     rusTitle: 'Страхование и здоровье',
-    data: [],
+    data: SAFETY_N_HEALTH_SECTIONS_DATA,
   },
   {
     id: 'HR',

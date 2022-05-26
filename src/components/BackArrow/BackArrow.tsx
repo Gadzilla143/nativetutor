@@ -5,6 +5,7 @@ import icons from '../../constants/icons';
 import {
   EmptyPageScreenNavigationProp,
   FavoritePageScreenNavigationProp,
+  InfoPageScreenNavigationProp,
   MapPageScreenNavigationProp,
   TDiscountDescProps,
   TDiscountProps,
@@ -18,7 +19,8 @@ export const BackArrow = ({
     | TDiscountDescProps['navigation']
     | EmptyPageScreenNavigationProp
     | MapPageScreenNavigationProp
-    | FavoritePageScreenNavigationProp;
+    | FavoritePageScreenNavigationProp
+    | InfoPageScreenNavigationProp;
 }) => {
   return (
     <>

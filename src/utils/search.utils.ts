@@ -1,12 +1,12 @@
 import {PAGES_DATA} from '../constants/page_constants';
 import {ISectionData} from '../types/page.types';
-import {IDiscountData} from '../types/discount.types';
 import {
   ESectionTitles,
   IInitialSectionData,
   TDetailedInfoData,
   TTopicsData,
 } from '../types/search.types';
+import {IDiscountData} from '../types/discount.types';
 
 const INITIAL_SECTIONS_DATA: IInitialSectionData[] = [
   {sectionTitle: ESectionTitles.DETAILED_INFO_SECTION_TITLE, data: []},
@@ -16,14 +16,13 @@ const INITIAL_SECTIONS_DATA: IInitialSectionData[] = [
   },
 ];
 
-export const getFullSectionsData = (): IInitialSectionData[] => {
-  const sectionsData: ISectionData[] = PAGES_DATA.reduce(
-    (prevPagesData, pageData) =>
-      pageData.data ? [...prevPagesData, ...pageData.data] : prevPagesData,
-    [] as ISectionData[],
-  ).flat();
+const getAdditionalPagesInfo = (sectionsData: ISectionData[]) =>
+  sectionsData.filter(sectionElement =>
+    sectionElement.data.every(el => el.rusTitle && el.engTitle),
+  );
 
-  const topicsData = sectionsData.reduce(
+const getTopicsData = (sectionsData: ISectionData[]) =>
+  sectionsData.reduce(
     (prevTopics, currentTopicData) => [
       ...prevTopics,
       {
@@ -34,15 +33,16 @@ export const getFullSectionsData = (): IInitialSectionData[] => {
     [] as TTopicsData[],
   );
 
-  const pagesData = sectionsData.reduce(
+const getDetailedInformationData = (sectionsData: ISectionData[]) => {
+  const pagesData = getAdditionalPagesInfo(sectionsData).reduce(
     (prevPagesData, currentPageData) =>
       currentPageData
-        ? [...prevPagesData, ...currentPageData.data]
+        ? [...prevPagesData, ...(currentPageData.data as IDiscountData[])]
         : prevPagesData,
     [] as IDiscountData[],
   );
 
-  const detailedInfoData = pagesData.reduce(
+  return pagesData.reduce(
     (prevDetailedInfo, currentDetailedInfo) => [
       ...prevDetailedInfo,
       {
@@ -52,6 +52,18 @@ export const getFullSectionsData = (): IInitialSectionData[] => {
     ],
     [] as TDetailedInfoData[],
   );
+};
+
+export const getFullSectionsData = (): IInitialSectionData[] => {
+  const sectionsData: ISectionData[] = PAGES_DATA.reduce(
+    (prevPagesData, pageData) =>
+      pageData.data ? [...prevPagesData, ...pageData.data] : prevPagesData,
+    [] as ISectionData[],
+  ).flat();
+
+  const topicsData = getTopicsData(sectionsData);
+
+  const detailedInfoData = getDetailedInformationData(sectionsData);
 
   return INITIAL_SECTIONS_DATA.map(section =>
     section.sectionTitle === 'Topics'

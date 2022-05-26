@@ -1,6 +1,7 @@
 import {IDiscountData} from './discount.types';
 import {RouteProp} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
+import {IInfoData} from './info.types';
 
 export type RootStackParamList = {
   Home: undefined;
@@ -9,6 +10,7 @@ export type RootStackParamList = {
   EmptyPage: undefined;
   Map: undefined;
   Favorite: undefined;
+  Info: {data: IInfoData[]};
 };
 
 type DiscountScreenRouteProp = RouteProp<RootStackParamList, 'Discount'>;
@@ -57,3 +59,15 @@ export type FavoritePageScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
   'Favorite'
 >;
+
+export type InfoPageScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  'Info'
+>;
+
+type InfoPageScreenRouteProp = RouteProp<RootStackParamList, 'Info'>;
+
+export type TInfoPageProps = {
+  route: InfoPageScreenRouteProp;
+  navigation: InfoPageScreenNavigationProp;
+};
