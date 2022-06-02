@@ -1,4 +1,5 @@
 import {ISectionData} from '../../types/page.types';
+import {TRAVEL_POLICY_INFO, VISA_POLICY_INFO} from '../travel/travel_constants';
 
 export const TRAVEL_SECTIONS_DATA: ISectionData[] = [
   {
@@ -13,13 +14,13 @@ export const TRAVEL_SECTIONS_DATA: ISectionData[] = [
     engTitle: 'Travel Policy',
     rusTitle: 'Политика путешествий',
     routeName: 'Info',
-    data: [],
+    data: [TRAVEL_POLICY_INFO],
   },
   {
     id: 'Visa Policy',
     engTitle: 'Visa Policy',
     rusTitle: 'Визовая политика',
     routeName: 'Info',
-    data: [],
+    data: [VISA_POLICY_INFO],
   },
 ];
