@@ -2,6 +2,9 @@ import {DISCOUNT_SECTIONS_DATA} from './sections/discount_club_sections_constant
 import {TRAVEL_SECTIONS_DATA} from './sections/travel_sections_constants';
 import {IPageData} from '../types/page.types';
 import {SAFETY_N_HEALTH_SECTIONS_DATA} from './sections/safety_n_health_sections_constants';
+import {HUMAN_RESOURCES_SECTIONS_DATA} from './sections/human_resources_sections_constants';
+import {TECHNICAL_GUIDE_SECTIONS_DATA} from './sections/technical_guide_sections_constants';
+import {FRUITS_INFO} from './fruits/fruits_constants';
 
 export const travel = require('../assets/pagesIcons/travel.png');
 export const discount = require('../assets/pagesIcons/discount.png');
@@ -38,7 +41,8 @@ export const PAGES_DATA: IPageData[] = [
     icon: fruits,
     engTitle: 'Fruits Delivery',
     rusTitle: 'Доставка фруктов',
-    data: [],
+    routeName: 'Info',
+    data: [FRUITS_INFO],
   },
   {
     id: 'Safety and Health',
@@ -52,14 +56,14 @@ export const PAGES_DATA: IPageData[] = [
     icon: humanResources,
     engTitle: 'Human Resources',
     rusTitle: 'Отдел кадров',
-    data: [],
+    data: HUMAN_RESOURCES_SECTIONS_DATA,
   },
   {
     id: 'TG',
     icon: technicalGuide,
     engTitle: 'Technical Guide',
     rusTitle: 'Тухническая помощь',
-    data: [],
+    data: TECHNICAL_GUIDE_SECTIONS_DATA,
   },
   {
     id: 'Maps',

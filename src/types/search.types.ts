@@ -1,11 +1,11 @@
-import {ISectionData} from './page.types';
+import {IPageData, ISectionData} from './page.types';
 import {IDiscountData} from './discount.types';
 
 type TAnchoredSection = {
   anchoredSection: ESectionTitles;
 };
 
-export type TTopicsData = ISectionData & TAnchoredSection;
+export type TTopicsData = (ISectionData | IPageData) & TAnchoredSection;
 
 export type TDetailedInfoData = IDiscountData & TAnchoredSection;
 

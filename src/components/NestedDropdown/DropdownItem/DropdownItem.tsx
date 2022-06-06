@@ -33,7 +33,9 @@ export const DropdownItem = ({
       return;
     }
 
-    navigation.navigate(dropdownItem.routeName as keyof RootStackParamList);
+    navigation.navigate(dropdownItem.routeName as keyof RootStackParamList, {
+      data: dropdownItem.data,
+    });
   };
 
   const getNestedItemInfo = (item: ISectionData) => {
