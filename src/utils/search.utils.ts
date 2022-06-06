@@ -21,8 +21,11 @@ const getAdditionalPagesInfo = (sectionsData: ISectionData[]) =>
     sectionElement.data.every(element => element.rusTitle && element.engTitle),
   );
 
-const getTopicsData = (sectionsData: ISectionData[]) =>
-  sectionsData.reduce(
+const getTopicsData = (
+  sectionsData: ISectionData[],
+  sectionDataWithInfo: IPageData[],
+) => {
+  const topicsData = sectionsData.reduce(
     (prevTopics, currentTopicData) => [
       ...prevTopics,
       {
@@ -33,10 +36,21 @@ const getTopicsData = (sectionsData: ISectionData[]) =>
     [] as TTopicsData[],
   );
 
-const getDetailedInformationData = (
-  sectionsDataWithTopics: ISectionData[],
-  sectionDataWithInfo: IPageData[],
-) => {
+  const infoTopicsData = sectionDataWithInfo.reduce(
+    (prevDetailedInfo, currentDetailedInfo) => [
+      ...prevDetailedInfo,
+      {
+        ...currentDetailedInfo,
+        anchoredSection: ESectionTitles.TOPICS_SECTION_TITLE,
+      },
+    ],
+    [] as TTopicsData[],
+  );
+
+  return topicsData.concat(infoTopicsData);
+};
+
+const getDetailedInformationData = (sectionsDataWithTopics: ISectionData[]) => {
   const pagesData = getAdditionalPagesInfo(sectionsDataWithTopics).reduce(
     (prevPagesData, currentPageData) =>
       currentPageData
@@ -45,7 +59,7 @@ const getDetailedInformationData = (
     [] as IDiscountData[],
   );
 
-  const topicsDetailedInformationData = pagesData.reduce(
+  return pagesData.reduce(
     (prevDetailedInfo, currentDetailedInfo) => [
       ...prevDetailedInfo,
       {
@@ -55,19 +69,6 @@ const getDetailedInformationData = (
     ],
     [] as TDetailedInfoData[],
   );
-
-  const infoDetailedInformationData = sectionDataWithInfo.reduce(
-    (prevDetailedInfo, currentDetailedInfo) => [
-      ...prevDetailedInfo,
-      {
-        ...currentDetailedInfo,
-        anchoredSection: ESectionTitles.DETAILED_INFO_SECTION_TITLE,
-      },
-    ],
-    [] as TDetailedInfoData[],
-  );
-
-  return topicsDetailedInformationData.concat(infoDetailedInformationData);
 };
 
 const getSectionsData = () => {
@@ -93,12 +94,12 @@ const getSectionsData = () => {
 export const getFullSectionsData = (): IInitialSectionData[] => {
   const {sectionsDataWithTopics, sectionsDataWithInfo} = getSectionsData();
 
-  const topicsData = getTopicsData(sectionsDataWithTopics);
-
-  const detailedInfoData = getDetailedInformationData(
+  const topicsData = getTopicsData(
     sectionsDataWithTopics,
     sectionsDataWithInfo,
   );
+
+  const detailedInfoData = getDetailedInformationData(sectionsDataWithTopics);
 
   return INITIAL_SECTIONS_DATA.map(section =>
     section.sectionTitle === 'Topics'

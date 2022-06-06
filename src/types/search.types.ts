@@ -5,9 +5,9 @@ type TAnchoredSection = {
   anchoredSection: ESectionTitles;
 };
 
-export type TTopicsData = ISectionData & TAnchoredSection;
+export type TTopicsData = (ISectionData | IPageData) & TAnchoredSection;
 
-export type TDetailedInfoData = (IDiscountData | IPageData) & TAnchoredSection;
+export type TDetailedInfoData = IDiscountData & TAnchoredSection;
 
 export enum ESectionTitles {
   DETAILED_INFO_SECTION_TITLE = 'Detailed information',
