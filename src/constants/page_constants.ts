@@ -13,11 +13,12 @@ export const health = require('../assets/pagesIcons/healthcare.png');
 export const humanResources = require('../assets/pagesIcons/humanResources.png');
 export const technicalGuide = require('../assets/pagesIcons/technicalGuide.png');
 export const maps = require('../assets/pagesIcons/map.png');
+export const unfavoredSvg = require('../assets/icons/unfavorite.png');
 
 export const PAGES_DATA: IPageData[] = [
   {
     id: 'Favorite',
-    icon: discount,
+    icon: unfavoredSvg,
     engTitle: 'Favorite',
     rusTitle: 'Избранное',
     routeName: 'Favorite',
