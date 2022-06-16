@@ -11,6 +11,7 @@ export type RootStackParamList = {
   Map: undefined;
   Favorite: undefined;
   Info: {data: IInfoData[]};
+  Authentication: undefined;
 };
 
 type DiscountScreenRouteProp = RouteProp<RootStackParamList, 'Discount'>;

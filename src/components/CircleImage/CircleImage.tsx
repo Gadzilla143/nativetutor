@@ -1,19 +1,23 @@
 import React from 'react';
-import {StyleSheet, View, Image} from 'react-native';
+import {StyleSheet, View, Image, TouchableWithoutFeedback} from 'react-native';
 
 const PAGE_ICON_SIZE = 45;
 
 export const CircleImage = ({
   image,
   imageColor,
+  onPress,
 }: {
   image: HTMLImageElement;
   imageColor: string;
+  onPress?: () => void;
 }) => {
   return (
-    <View style={{...styles.pageIconCircle, backgroundColor: imageColor}}>
-      <Image source={image} style={styles.pageIcon} />
-    </View>
+    <TouchableWithoutFeedback onPress={onPress}>
+      <View style={{...styles.pageIconCircle, backgroundColor: imageColor}}>
+        <Image source={image} style={styles.pageIcon} />
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 
