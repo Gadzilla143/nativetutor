@@ -21,8 +21,16 @@ export const AuthenticationPage = ({
 
   const isKeyboardVisible = useKeyboardVisibility();
 
+  const logInUser = (userEmail: string, userPassword: string) => {
+    console.log(userEmail, userPassword);
+  };
+
+  const signUpUser = (userEmail: string, userPassword: string) => {
+    console.log(userEmail, userPassword);
+  };
+
   return (
-    <DataPageWrapper navigation={navigation} pageTitle={'Log In'}>
+    <DataPageWrapper navigation={navigation} pageTitle={'Authentication'}>
       <View
         style={[
           styles.authenticationContainer,
@@ -45,8 +53,15 @@ export const AuthenticationPage = ({
           placeholderTextColor={COLORS.GREY_TEXT}
           onChangeText={setPassword}
         />
-        <TouchableWithoutFeedback onPress={() => console.log(email, password)}>
-          <Text style={styles.loginButtonText}>Login</Text>
+        <TouchableWithoutFeedback onPress={() => logInUser(email, password)}>
+          <Text style={[styles.authenticationButton, styles.loginButton]}>
+            Login
+          </Text>
+        </TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={() => signUpUser(email, password)}>
+          <Text style={[styles.authenticationButton, styles.sigUpButton]}>
+            Sign Up
+          </Text>
         </TouchableWithoutFeedback>
       </View>
     </DataPageWrapper>
@@ -77,17 +92,21 @@ const styles = StyleSheet.create({
     padding: 10,
     borderColor: COLORS.LIGHT_BLUE,
   },
-  loginButtonText: {
+  authenticationButton: {
     width: '100%',
     padding: 10,
     fontSize: SIZES.h4,
     fontWeight: 'bold',
     ...FONT_FAMILY,
     color: COLORS.WHITE,
-    backgroundColor: COLORS.BLUE,
-    borderColor: COLORS.BLUE,
-    borderWidth: 1,
     borderRadius: 20,
     textAlign: 'center',
+  },
+  loginButton: {
+    backgroundColor: COLORS.DARK_BLUE,
+    marginBottom: 10,
+  },
+  sigUpButton: {
+    backgroundColor: COLORS.BLUE,
   },
 });
