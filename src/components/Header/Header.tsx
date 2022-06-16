@@ -1,11 +1,11 @@
 import React from 'react';
 import {Text, View, StyleSheet, Image} from 'react-native';
 import {COLORS, FONT_FAMILY, SIZES} from '../../constants/style';
-import {CircleImage} from '../CircleImage/CircleImage';
 import LinearGradient from 'react-native-linear-gradient';
 import {SearchInput} from '../SearchInput/SearchInput';
 import {HomePageScreenNavigationProp} from '../../types/navigation.types';
-import {account, logo} from '../../constants/header_constants';
+import {logo} from '../../constants/header_constants';
+import {LogInContainer} from '../LogInContainer/LogInContainer';
 
 const APP_NAME = 'LAsk';
 
@@ -20,10 +20,6 @@ export const Header = ({
   setIsPressOnSearchArea,
   isPressOnSearchArea,
 }: IHeaderProps) => {
-  const onPressAuthenticationButton = () => {
-    navigation.navigate('Authentication');
-  };
-
   return (
     <LinearGradient
       colors={[COLORS.DARK_BLUE, COLORS.LIGHT_BLUE]}
@@ -40,11 +36,7 @@ export const Header = ({
           <Text style={styles.appName}>{APP_NAME}</Text>
         </View>
         <View>
-          <CircleImage
-            image={account}
-            imageColor={COLORS.WHITE}
-            onPress={onPressAuthenticationButton}
-          />
+          <LogInContainer navigation={navigation} />
         </View>
       </View>
 
