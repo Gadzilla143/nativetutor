@@ -20,6 +20,10 @@ export const Header = ({
   setIsPressOnSearchArea,
   isPressOnSearchArea,
 }: IHeaderProps) => {
+  const onPressAuthenticationButton = () => {
+    navigation.navigate('Authentication');
+  };
+
   return (
     <LinearGradient
       colors={[COLORS.DARK_BLUE, COLORS.LIGHT_BLUE]}
@@ -36,7 +40,11 @@ export const Header = ({
           <Text style={styles.appName}>{APP_NAME}</Text>
         </View>
         <View>
-          <CircleImage image={account} imageColor={COLORS.WHITE} />
+          <CircleImage
+            image={account}
+            imageColor={COLORS.WHITE}
+            onPress={onPressAuthenticationButton}
+          />
         </View>
       </View>
 
