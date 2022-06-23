@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -11,6 +11,9 @@ import {TInfoPageProps} from '../../types/navigation.types';
 import {DataPageWrapper} from '../../components/DataPageWrapper/DataPageWrapper';
 import {useKeyboardVisibility} from '../../hooks/useKeyboardVisibility';
 import firebase from 'firebase/compat';
+import {AuthContext} from '../../../App';
+import {IAuthContext} from '../../types/context.types';
+import {setData} from '../../utils/AsyncStorage';
 
 export const AuthenticationPage = ({
   navigation,
@@ -20,6 +23,8 @@ export const AuthenticationPage = ({
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+
+  const {setCurrentUser} = useContext(AuthContext) as IAuthContext;
 
   const isKeyboardVisible = useKeyboardVisibility();
 
@@ -43,6 +48,11 @@ export const AuthenticationPage = ({
     await firebase
       .auth()
       .signInWithEmailAndPassword(userEmail, userPassword)
+      .then(data => {
+        setData('auth', data);
+        setCurrentUser(data);
+        navigation.navigate('Home');
+      })
       .catch(error => {
         setErrorMessage(error.message);
       });
@@ -52,6 +62,11 @@ export const AuthenticationPage = ({
     await firebase
       .auth()
       .createUserWithEmailAndPassword(userEmail, userPassword)
+      .then(data => {
+        setData('auth', data);
+        setCurrentUser(data);
+        navigation.navigate('Home');
+      })
       .catch(error => {
         setErrorMessage(error.message);
       });
