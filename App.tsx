@@ -15,6 +15,9 @@ import {FavoritePage} from './src/screens/FavoritePage/FavoritePage';
 import {IDiscountData} from './src/types/discount.types';
 import {InfoPage} from './src/screens/InfoPage/InfoPage';
 import {AuthenticationPage} from './src/screens/AuthenticationPage/AuthenticationPage';
+import {initialiseFirebase} from './firebase.config';
+
+initialiseFirebase();
 
 const Stack = createStackNavigator<RootStackParamList>();
 export const FavoriteContext = createContext<IFavoriteContext | null>(null);

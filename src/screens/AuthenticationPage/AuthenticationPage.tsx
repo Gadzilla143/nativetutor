@@ -3,13 +3,14 @@ import {
   StyleSheet,
   Text,
   TextInput,
-  TouchableWithoutFeedback,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import {COLORS, FONT_FAMILY, SIZES} from '../../constants/style';
 import {TInfoPageProps} from '../../types/navigation.types';
 import {DataPageWrapper} from '../../components/DataPageWrapper/DataPageWrapper';
 import {useKeyboardVisibility} from '../../hooks/useKeyboardVisibility';
+import firebase from 'firebase/compat';
 
 export const AuthenticationPage = ({
   navigation,
@@ -18,15 +19,42 @@ export const AuthenticationPage = ({
 }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const isKeyboardVisible = useKeyboardVisibility();
 
-  const logInUser = (userEmail: string, userPassword: string) => {
-    console.log(userEmail, userPassword);
+  const setUserEmail = (userEmail: string) => {
+    if (errorMessage) {
+      setErrorMessage('');
+    }
+
+    setEmail(userEmail);
   };
 
-  const signUpUser = (userEmail: string, userPassword: string) => {
-    console.log(userEmail, userPassword);
+  const setUserPassword = (userPassword: string) => {
+    if (errorMessage) {
+      setErrorMessage('');
+    }
+
+    setPassword(userPassword);
+  };
+
+  const logInUser = async (userEmail: string, userPassword: string) => {
+    await firebase
+      .auth()
+      .signInWithEmailAndPassword(userEmail, userPassword)
+      .catch(error => {
+        setErrorMessage(error.message);
+      });
+  };
+
+  const signUpUser = async (userEmail: string, userPassword: string) => {
+    await firebase
+      .auth()
+      .createUserWithEmailAndPassword(userEmail, userPassword)
+      .catch(error => {
+        setErrorMessage(error.message);
+      });
   };
 
   return (
@@ -41,28 +69,39 @@ export const AuthenticationPage = ({
         <TextInput
           style={styles.elementWidth}
           autoCorrect={false}
+          value={email}
           placeholder={'Email'}
           placeholderTextColor={COLORS.GREY_TEXT}
-          onChangeText={setEmail}
+          onChangeText={email => setUserEmail(email)}
         />
         <TextInput
           style={styles.elementWidth}
           secureTextEntry={true}
           autoCorrect={false}
+          value={password}
           placeholder={'Password'}
           placeholderTextColor={COLORS.GREY_TEXT}
-          onChangeText={setPassword}
+          onChangeText={password => setUserPassword(password)}
         />
-        <TouchableWithoutFeedback onPress={() => logInUser(email, password)}>
+        {errorMessage ? (
+          <Text style={styles.errorMessage}>{errorMessage}</Text>
+        ) : null}
+        <TouchableOpacity
+          activeOpacity={0.7}
+          onPress={() => logInUser(email, password)}
+          style={styles.authenticationButtonSize}>
           <Text style={[styles.authenticationButton, styles.loginButton]}>
             Login
           </Text>
-        </TouchableWithoutFeedback>
-        <TouchableWithoutFeedback onPress={() => signUpUser(email, password)}>
+        </TouchableOpacity>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          onPress={() => signUpUser(email, password)}
+          style={styles.authenticationButtonSize}>
           <Text style={[styles.authenticationButton, styles.sigUpButton]}>
             Sign Up
           </Text>
-        </TouchableWithoutFeedback>
+        </TouchableOpacity>
       </View>
     </DataPageWrapper>
   );
@@ -80,8 +119,15 @@ const styles = StyleSheet.create({
   displayWithoutKeyboard: {
     justifyContent: 'center',
   },
+  errorMessage: {
+    color: COLORS.ERROR,
+    marginBottom: 10,
+    ...FONT_FAMILY,
+    textAlign: 'center',
+    width: SIZES.WIDTH * 0.8,
+  },
   elementWidth: {
-    width: '100%',
+    width: SIZES.WIDTH * 0.8,
     fontSize: SIZES.h4,
     ...FONT_FAMILY,
     paddingLeft: 15,
@@ -92,8 +138,10 @@ const styles = StyleSheet.create({
     padding: 10,
     borderColor: COLORS.LIGHT_BLUE,
   },
+  authenticationButtonSize: {
+    width: SIZES.WIDTH * 0.8,
+  },
   authenticationButton: {
-    width: '100%',
     padding: 10,
     fontSize: SIZES.h4,
     fontWeight: 'bold',

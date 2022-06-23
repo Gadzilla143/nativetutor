@@ -12,6 +12,7 @@ export enum COLORS {
   DARK = '#172b4d',
   BLACK = '#333333',
   GREY_TEXT = '#606060',
+  ERROR = '#fc0303',
 }
 
 const {width, height} = Dimensions.get('window');
